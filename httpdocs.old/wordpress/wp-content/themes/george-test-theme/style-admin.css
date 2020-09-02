@@ -1,0 +1,8 @@
+[data-name="firecask_sections"] .acf-flexible-content .layout .acf-fc-layout-handle {
+	background: #0f0;
+	color: #fff;
+}
+
+.acf-repeater .acf-table>tbody>tr + tr td {
+	border-top: 2px solid #0f0 !important;
+}

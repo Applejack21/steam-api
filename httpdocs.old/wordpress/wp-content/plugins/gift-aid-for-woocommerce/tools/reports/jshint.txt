@@ -1,0 +1,47 @@
+
+[4m../../assets/development/js/gift-aid-for-woocommerce-admin.js[24m
+  [90mline 1[39m     [90mcol 13[39m  [34m'$' is defined but never used.[39m
+
+[4m../../assets/development/js/gift-aid-for-woocommerce-customizer.js[24m
+  [90mline 1[39m     [90mcol 13[39m  [34m'$' is defined but never used.[39m
+
+[4m../../assets/development/js/gift-aid-for-woocommerce-public.js[24m
+  [90mline 19[39m    [90mcol 64[39m  [34mStrings must use singlequote.[39m
+  [90mline 31[39m    [90mcol 31[39m  [34m'gift_aid_html' is not defined.[39m
+  [90mline 35[39m    [90mcol 21[39m  [34m'gift_aid_html' is not defined.[39m
+
+[4m../../assets/development/js/lib/_modernizr-custom.js[24m
+  [90mline 104[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 163[39m   [90mcol 48[39m  [34mDo not use Boolean as a constructor.[39m
+  [90mline 174[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 233[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 340[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 365[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 440[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 504[39m   [90mcol 47[39m  [34mExpected '===' and instead saw '=='.[39m
+  [90mline 535[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 581[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 619[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 655[39m   [90mcol 56[39m  [34mExpected '===' and instead saw '=='.[39m
+  [90mline 660[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 677[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 754[39m   [90mcol 36[39m  [34mExpected '!==' and instead saw '!='.[39m
+  [90mline 756[39m   [90mcol 31[39m  [34mExpected '===' and instead saw '=='.[39m
+  [90mline 763[39m   [90mcol 29[39m  [34mExpected '===' and instead saw '=='.[39m
+  [90mline 771[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 789[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 828[39m   [90mcol 3[39m   [34mUnnecessary semicolon.[39m
+  [90mline 1007[39m  [90mcol 29[39m  [34mExpected '!==' and instead saw '!='.[39m
+  [90mline 1233[39m  [90mcol 22[39m  [34mMissing semicolon.[39m
+  [90mline 1235[39m  [90mcol 18[39m  [34mDo not use Boolean as a constructor.[39m
+  [90mline 1250[39m  [90mcol 69[39m  [34mExpected '===' and instead saw '=='.[39m
+  [90mline 1341[39m  [90mcol 48[39m  [34mExpected '===' and instead saw '=='.[39m
+  [90mline 1365[39m  [90mcol 48[39m  [34mExpected '===' and instead saw '=='.[39m
+  [90mline 1456[39m  [90mcol 30[39m  [34mExpected '!==' and instead saw '!='.[39m
+  [90mline 1456[39m  [90mcol 95[39m  [34mExpected '===' and instead saw '=='.[39m
+  [90mline 1519[39m  [90mcol 1[39m   [34mUnnecessary semicolon.[39m
+  [90mline 1002[39m  [90mcol 7[39m   [34m'prefixed' is defined but never used.[39m
+  [90mline 1098[39m  [90mcol 7[39m   [34m'testProp' is defined but never used.[39m
+
+  [33m⚠[39m  36 warnings
+

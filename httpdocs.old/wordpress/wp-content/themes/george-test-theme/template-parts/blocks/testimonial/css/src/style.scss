@@ -1,0 +1,16 @@
+.wp-block-testimonial {
+	background-color: #f00;
+	padding: 2em;
+	text-align: center;
+
+	.testimonial-blockquote {
+		.text {
+			margin-bottom: 15px;
+		}
+
+		.author {
+			font-size: .9em;
+			font-style: italic;
+		}
+	}
+}

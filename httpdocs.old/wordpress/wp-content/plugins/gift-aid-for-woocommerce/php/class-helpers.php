@@ -1,0 +1,26 @@
+<?php
+/**
+ * Helpers Class.
+ *
+ * @since	1.3.0
+ *
+ * @package dtg\gift_aid_for_woocommerce
+ */
+
+namespace dtg\gift_aid_for_woocommerce;
+
+// Traits.
+// require_once 'traits/trait-render-view.php';
+
+/**
+ * Class Helpers.
+ *
+ * Helper class containing useful static methods.
+ *
+ * @since	1.3.0
+ *
+ * @package dtg\gift_aid_for_woocommerce
+ */
+class Helpers {
+	//use Helper_Render_View;
+}

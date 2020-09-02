@@ -1,0 +1,7 @@
+{
+"version": 3,
+"mappings": "AAII,+DAAgC,CAC5B,OAAO,CAAE,IAAI",
+"sources": ["../../resources/scss/partials/_gateway.scss"],
+"names": [],
+"file": "admin.min.css"
+}

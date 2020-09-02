@@ -1,0 +1,23 @@
+.mfp-content {
+	.white-popup {
+		background: $color-white;
+		margin: auto;
+		padding: 1em;
+		position: relative;
+		width: 80%;
+
+		@media (min-width:992px) {
+			padding: 2em;
+		}
+
+		.wpcf7 {
+			br {
+				display: none;
+			}
+		}
+	}
+
+	.narrow-popup {
+		max-width: 600px;
+	}
+}

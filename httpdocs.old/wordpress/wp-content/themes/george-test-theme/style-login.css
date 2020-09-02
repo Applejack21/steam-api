@@ -1,0 +1,53 @@
+body {
+	background: -webkit-linear-gradient(left, #ddd 0%, #eee 100%);
+	background: -o-linear-gradient(left, #ddd 0%, #eee 100%);
+	background: linear-gradient(to right, #ddd 0%, #eee 100%);
+}
+
+.login h1 a {
+	width: auto;
+	-webkit-background-size: 100% auto;
+	background-size: 100% auto;
+	background-image: url('assets/images/fc-logo-white.png');
+}
+
+.login form {
+	border-radius:.55em;
+	-webkit-box-shadow:-4px 4px 15px 3px rgba(35,35,35,0.19);
+	box-shadow:-4px 4px 15px 3px rgba(35,35,35,0.19);
+}
+
+.login form label {
+	color: #222;
+}
+
+.login form input[type="text"],
+.login form input[type="password"] {
+	-webkit-box-shadow:none;
+	box-shadow:none;
+}
+
+.login form input[type="submit"] {
+	background: #222;
+	border: none;
+	-webkit-box-shadow:none;
+	box-shadow:none;
+	text-shadow: none;
+}
+
+.login form input[type="submit"]:hover,
+.login form input[type="submit"]:focus {
+	background: #222;
+	color: #fff;
+	outline: none;
+}
+
+.login #backtoblog a,
+.login #nav a {
+	color: #fff;
+}
+
+.login #backtoblog a:hover,
+.login #nav a:hover {
+	color: #000;
+}

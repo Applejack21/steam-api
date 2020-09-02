@@ -1,0 +1,26 @@
+{
+	"name": "firecask-starter",
+	"version": "1.0.0",
+	"description": "",
+	"author": "FireCask",
+	"private": true,
+	"devDependencies": {
+		"gulp": "3.9.1",
+		"gulp-livereload": "latest",
+		"gulp-sass": "latest",
+		"gulp-autoprefixer": "latest",
+		"gulp-concat": "latest",
+		"gulp-uglify": "latest",
+		"gulp-dest": "latest",
+		"gulp-order": "latest",
+		"gulp-sourcemaps": "latest",
+		"gulp-rename": "latest",
+		"gulp-flatmap": "latest"
+	},
+	"dependencies": {
+		"natives": "^1.1.6"
+	},
+	"browserslist": [
+		"last 5 versions"
+	]
+}

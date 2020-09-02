@@ -1,0 +1,11 @@
+body.admin-bar {
+	@media (min-width:783px) {
+		padding-top: 32px;
+	}
+	
+	.site-header {
+		@media (min-width:783px) {
+			top: 32px;
+		}
+	}
+}

@@ -1,0 +1,17 @@
+{
+	"name": "gift-aid-for-woocommerce",
+	"version": "1.3",
+	"authors": [
+		"davetgreen"
+	],
+	"license": "MIT",
+	"private": true,
+	"ignore": [
+		"**/.*",
+		"node_modules",
+		"bower_components"
+	],
+	"dependencies": {
+		"modernizr": "latest"
+	}
+}

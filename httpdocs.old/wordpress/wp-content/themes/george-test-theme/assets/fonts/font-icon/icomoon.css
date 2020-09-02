@@ -1,0 +1,82 @@
+@font-face {
+  font-family: 'fc-font-icon';
+  src:  url('fc-font-icon.woff?vy9yyz') format('woff');
+  font-weight: normal;
+  font-style: normal;
+}
+
+[class^="fci-"], [class*=" fci-"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'fc-font-icon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+.fci-checkmark:before {
+  content: "\ea10";
+}
+.fci-costs:before {
+  content: "\e912";
+}
+.fci-chevron:before {
+  content: "\e90f";
+}
+.fci-go-digital:before {
+  content: "\e910";
+}
+.fci-quality-assurance:before {
+  content: "\e911";
+}
+.fci-bot:before {
+  content: "\e900";
+}
+.fci-collaboration:before {
+  content: "\e901";
+}
+.fci-debt:before {
+  content: "\e902";
+}
+.fci-execution:before {
+  content: "\e903";
+}
+.fci-money:before {
+  content: "\e904";
+}
+.fci-paper:before {
+  content: "\e905";
+}
+.fci-process:before {
+  content: "\e906";
+}
+.fci-project-management:before {
+  content: "\e907";
+}
+.fci-research:before {
+  content: "\e908";
+}
+.fci-excel:before {
+  content: "\e909";
+}
+.fci-loadlife:before {
+  content: "\e90a";
+}
+.fci-message:before {
+  content: "\e90b";
+}
+.fci-padlock:before {
+  content: "\e90c";
+}
+.fci-redact:before {
+  content: "\e90d";
+}
+.fci-workflow:before {
+  content: "\e90e";
+}

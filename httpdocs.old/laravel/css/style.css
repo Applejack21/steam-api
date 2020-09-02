@@ -1,0 +1,101 @@
+/* Code to change background colour */
+body {
+    background-color:#fefefe;
+}
+
+li.number {
+    list-style-type:decimal;
+}
+
+/* Code to format the navigation menu */
+.header-nav li {
+    padding-left:10px;
+}
+
+nav.header-nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color:#2e6e9e;
+    padding-top:5px;
+}
+
+nav a, .dropbtn {
+    display: inline-block;
+    color: #fefefe;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+}
+
+nav a:hover, .equipmentdrop:hover .dropbtn {
+    background-color: #e17009;
+    color: #fefefe;
+}
+
+nav.equipmentdrop {
+    display: inline-block;
+}
+
+.equipment-content {
+    display: none;
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 160px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+
+.equipment-content a {
+    color: black;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+}
+
+.equipment-content a:hover {
+    background-color: #e17009;
+}
+
+.equipmentdrop:hover .equipment-content {
+    display: block;
+}
+
+
+textarea {
+    resize: both;
+    padding-left: 10px;
+}
+
+.alert-info {
+    color:black;
+}
+
+table, th, td {
+    border: 1px solid black;
+    border-collapse: collapse;
+    width: auto;
+    table-layout: fixed;
+    text-align: center;
+}
+
+th, td {
+    padding: 10px;
+}
+
+/* Only make certain tr to be alt colours */
+tr#tablealtcolour:nth-child(even) {
+    background: #c5dbec
+}
+
+tr#tablealtcolour:nth-child(odd) {
+    background: #ffffff
+}
+
+/* Code for the hyperlinks */
+#hyperlink
+{
+  color: #2e6e9e !important;
+}

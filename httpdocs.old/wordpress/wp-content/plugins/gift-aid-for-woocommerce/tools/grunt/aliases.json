@@ -1,0 +1,26 @@
+{
+	"build": [
+		"default",
+		"watch"
+	],
+	"document": [
+		"jsdoc",
+		"phpdoc",
+		"sassdoc",
+		"notify:docs"
+	],
+	"images": [
+		"imagemin",
+		"svgmin",
+		"notify:images"
+	],
+	"lint": [
+		"jshint",
+		"phplint",
+		"sasslint",
+		"notify:linting"
+	],
+	"spritesmith": [
+		"sprite"
+	]
+}

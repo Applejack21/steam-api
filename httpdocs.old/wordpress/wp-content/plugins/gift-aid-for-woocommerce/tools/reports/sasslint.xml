@@ -1,0 +1,17 @@
+
+[4massets/development/scss/gift-aid-for-woocommerce-admin.scss[24m
+   [2m6:2[22m  [33mwarning[39m  Mixed tabs and spaces  [2mindentation[22m
+   [2m7:2[22m  [33mwarning[39m  Mixed tabs and spaces  [2mindentation[22m
+  [2m11:2[22m  [33mwarning[39m  Mixed tabs and spaces  [2mindentation[22m
+  [2m12:2[22m  [33mwarning[39m  Mixed tabs and spaces  [2mindentation[22m
+
+[4massets/development/scss/public/_sprites.scss[24m
+  [2m12:21[22m  [33mwarning[39m  No unit allowed for values of 0  [2mzero-unit[22m
+  [2m13:22[22m  [33mwarning[39m  No unit allowed for values of 0  [2mzero-unit[22m
+  [2m16:16[22m  [33mwarning[39m  No unit allowed for values of 0  [2mzero-unit[22m
+  [2m16:21[22m  [33mwarning[39m  No unit allowed for values of 0  [2mzero-unit[22m
+  [2m58:25[22m  [33mwarning[39m  Quotes around URLs are required  [2murl-quotes[22m
+  [2m75:1[22m   [33mwarning[39m  Space expected between blocks    [2mempty-line-between-blocks[22m
+
+[33m[1m✖ 10 problems (0 errors, 10 warnings)
+[22m[39m

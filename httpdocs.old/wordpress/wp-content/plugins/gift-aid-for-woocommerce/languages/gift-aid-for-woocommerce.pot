@@ -1,0 +1,124 @@
+#, fuzzy
+msgid ""
+msgstr ""
+"Plural-Forms: nplurals=INTEGER; plural=EXPRESSION;\n"
+"Project-Id-Version: Gift Aid for WooCommerce\n"
+"POT-Creation-Date: 2017-03-21 10:17+0000\n"
+"PO-Revision-Date: 2017-03-21 10:16+0000\n"
+"Last-Translator: \n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"X-Generator: Poedit 1.8.8\n"
+"X-Poedit-Basepath: ..\n"
+"X-Poedit-WPHeader: plugin.php\n"
+"X-Poedit-SourceCharset: UTF-8\n"
+"X-Poedit-KeywordsList: __;_e;_n:1,2;_x:1,2c;_ex:1,2c;_nx:4c,1,2;esc_attr__;"
+"esc_attr_e;esc_attr_x:1,2c;esc_html__;esc_html_e;esc_html_x:1,2c;_n_noop:1,2;"
+"_nx_noop:3c,1,2;__ngettext_noop:1,2\n"
+"X-Poedit-SearchPath-0: .\n"
+"X-Poedit-SearchPathExcluded-0: *.js\n"
+
+#: php/class-checkout.php:98 php/class-orders.php:142
+msgid "Reclaim Gift Aid"
+msgstr ""
+
+#: php/class-checkout.php:164 php/class-orders.php:163
+msgid "You have chosen to reclaim Gift Aid."
+msgstr ""
+
+#: php/class-csv-export.php:103 php/class-orders.php:118
+#: php/class-orders.php:137 php/class-orders.php:189
+msgid "No"
+msgstr ""
+
+#: php/class-orders.php:96
+msgid "Reclaim Gift Aid?"
+msgstr ""
+
+#: php/class-orders.php:141
+msgid "Gift Aid Details"
+msgstr ""
+
+#: php/class-orders.php:189
+msgid "Yes"
+msgstr ""
+
+#: php/class-settings.php:77 php/class-settings.php:96
+msgid "Gift Aid"
+msgstr ""
+
+#: php/class-settings.php:98
+msgid ""
+"If you're a charitable organisation based in the UK using WooCommerce to "
+"accept donations, it is highly likely that you need to give your donors the "
+"option to reclaim Gift Aid so that you can claim an extra 25p for every £1 "
+"they give. Once configured, this plugin will empower your donors to reclaim "
+"Gift Aid on their donations. Visit the <a href=\"https://www.gov.uk/donating-"
+"to-charity/gift-aid\">GOV.UK Gift Aid</a> page for more information."
+msgstr ""
+
+#: php/class-settings.php:103
+msgid "Enable Gift Aid"
+msgstr ""
+
+#: php/class-settings.php:105
+msgid "Whether or not to enable Gift Aid at the checkout."
+msgstr ""
+
+#: php/class-settings.php:111
+msgid "Section Heading"
+msgstr ""
+
+#: php/class-settings.php:113
+msgid ""
+"Optional heading for the Gift Aid section at the checkout. Defaults to "
+"\"Reclaim Gift Aid\"."
+msgstr ""
+
+#: php/class-settings.php:120
+msgid "Checkbox Label"
+msgstr ""
+
+#: php/class-settings.php:122
+msgid ""
+"Label for the checkbox. Must be populated in order for the Gift Aid option "
+"to appear at the checkout."
+msgstr ""
+
+#: php/class-settings.php:129
+msgid "Description"
+msgstr ""
+
+#: php/class-settings.php:131
+msgid ""
+"Text explaining Gift Aid to the donor. Must be populated in order for the "
+"Gift Aid option to appear at the checkout."
+msgstr ""
+
+#: php/class-settings.php:158
+msgid "Settings"
+msgstr ""
+
+#. Plugin Name of the plugin/theme
+msgid "Gift Aid for WooCommerce"
+msgstr ""
+
+#. Plugin URI of the plugin/theme
+msgid "https://github.com/davetgreen/gift-aid-for-woocommerce"
+msgstr ""
+
+#. Description of the plugin/theme
+msgid ""
+"A plugin for WooCommerce that empowers donors to elect to reclaim Gift Aid "
+"at the checkout."
+msgstr ""
+
+#. Author of the plugin/theme
+msgid "Dave Green <hello@davetgreen.me>"
+msgstr ""
+
+#. Author URI of the plugin/theme
+msgid "http://www.davetgreen.me"
+msgstr ""

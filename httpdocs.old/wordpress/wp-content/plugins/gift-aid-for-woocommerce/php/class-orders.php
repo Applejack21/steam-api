@@ -1,0 +1,199 @@
+<?php
+/**
+ * Orders Class.
+ *
+ * @since	1.3.0
+ *
+ * @package dtg\gift_aid_for_woocommerce
+ */
+
+namespace dtg\gift_aid_for_woocommerce;
+
+/**
+ * Class Orders
+ *
+ * Order related functionality.
+ *
+ * @since	1.3.0
+ *
+ * @package dtg\gift_aid_for_woocommerce
+ */
+class Orders {
+
+	/**
+	 * Path to the root plugin file.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	1.3.0
+	 */
+	private $plugin_root;
+
+	/**
+	 * Plugin name.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	1.3.0
+	 */
+	private $plugin_name;
+
+	/**
+	 * Plugin prefix.
+	 *
+	 * @var 	string
+	 * @access	private
+	 * @since	1.3.0
+	 */
+	private $plugin_prefix;
+
+	/**
+	 * Constructor.
+	 *
+	 * @since	1.3.0
+	 */
+	public function __construct() {
+		$this->plugin_root 		 = DTG_GIFT_AID_ROOT;
+		$this->plugin_name		 = DTG_GIFT_AID_NAME;
+		$this->plugin_prefix     = DTG_GIFT_AID_PREFIX;
+	}
+
+	/**
+	 * Unleash Hell.
+	 *
+	 * @since	1.3.0
+	 */
+	public function run() {
+		// Add a sortable Gift Aid column, populated with the status for each order.
+		add_filter( 'manage_edit-shop_order_columns', array( $this, 'add_orders_column' ), 10 );
+		add_action( 'manage_shop_order_posts_custom_column', array( $this, 'add_column_data' ), 10 );
+
+		// Add the Gift Aid meta to the order details screen.
+		add_action( 'woocommerce_admin_order_data_after_order_details', array( $this, 'add_order_details' ), 10 );
+
+		// Add the Gift Aid meta to the order confirmation email.
+		add_action( 'woocommerce_email_before_order_table', array( $this, 'add_order_email_meta' ), 10, 3 );
+
+		// Update the meta data for the order.
+		add_action( 'woocommerce_checkout_update_order_meta', array( $this, 'update_order_meta' ), 10 );
+
+	}
+
+	/**
+	 * Add a Gift Aid column to the order screen.
+	 *
+	 * @param	array $columns An array of column names.
+	 * @since	1.3.0
+	 */
+	public function add_orders_column( $columns ) {
+		// Add columns into our new array if $columns is an array.
+		$new_columns = (is_array( $columns )) ? $columns : array();
+
+		// Remove the order actions column.
+		unset( $new_columns['order_actions'] );
+
+		// Create our column.
+		$new_columns['gift_aid'] = apply_filters( $this->plugin_prefix . '_orders_column_name', __( 'Reclaim Gift Aid?', 'gift-aid-for-woocommerce' ) );
+
+		// Put the order actions column back.
+		$new_columns['order_actions'] = $columns['order_actions'];
+
+		return $new_columns;
+	}
+
+	/**
+	 * Populate the Gift Aid column with the post meta.
+	 *
+	 * @param	string $column Column name.
+	 * @since	1.3.0
+	 */
+	public function add_column_data( $column ) {
+
+		global $post;
+
+		// Get the post meta containing the Gift Aid status.
+		$status = get_post_meta( $post->ID, 'gift_aid_reclaimed', true );
+
+		// Add a fallback of "No" if no source is available.
+		$status = ( ! empty( $status ) ? $status : __( 'No', 'gift-aid-for-woocommerce' ) );
+
+		// Output the Gift Aid status in our column.
+		if ( ! empty( $status ) && 'gift_aid' === $column  ) {
+			echo esc_html( $status );
+		}
+	}
+
+	/**
+	 * Add the Gift Aid status for each order on the shop orders screen.
+	 *
+	 * @param	object $order Current order object.
+	 * @since	1.3.0
+	 */
+	public function add_order_details( $order ) {
+		// Get the post meta containing the Gift Aid status.
+		$status = get_post_meta( $order->id, 'gift_aid_reclaimed', true );
+
+		// Add a fallback of "No" if no source is available.
+		$status = ( ! empty( $status ) ? $status : __( 'No', 'gift-aid-for-woocommerce' ) );
+		?>
+
+		<div class="order_data_column">
+			<h4><?php esc_html_e( 'Gift Aid Details', 'gift-aid-for-woocommerce' ); ?></h4>
+			<?php echo '<p><strong>' . esc_html( __( 'Reclaim Gift Aid', 'gift-aid-for-woocommerce' ) ) . ':</strong> ' . esc_html( $status ) . '</p>'; ?>
+		</div>
+
+		<?php
+	}
+
+	/**
+	 * Add the Gift Aid meta to order emails.
+	 *
+	 * @param	object  $order The order object.
+	 * @param	boolean $sent_to_admin Whether the email is for the admin.
+	 * @param	boolean $plain_text Whether the email is plain text.
+	 * @since	1.3.0
+	 */
+	public function add_order_email_meta( $order, $sent_to_admin, $plain_text ) {
+
+		// Get the post meta containing the Gift Aid status.
+		$status = get_post_meta( $order->id, 'gift_aid_reclaimed', true );
+
+		if ( ! $sent_to_admin ) {
+			// Set our confirmation message for the customer.
+			$message = apply_filters( $this->plugin_prefix . '_order_email_message_customer', __( 'You have chosen to reclaim Gift Aid.', 'gift-aid-for-woocommerce' ) );
+		} else {
+			// Set our confirmation message for the administrator.
+			$message = apply_filters( $this->plugin_prefix . '_order_email_message_admin', __( 'Customer has chosen to reclaim Gift Aid.', 'gift-aid-for-woocommerce' ) );
+		}
+
+		// If Gift Aid is to be reclaimed, confirm this in the email.
+		if ( ! empty( $status ) && 'Yes' === $status ) {
+			echo '<p class="gift-aid-order-email"><strong>' . esc_html( $message ) . '</strong></p>';
+		}
+	}
+
+	/**
+	 * Update order post meta if the donor has chosen to reclaim Gift Aid.
+	 *
+	 * @param	object $order_id The order ID.
+	 * @since	1.3.0
+	 */
+	public function update_order_meta( $order_id ) {
+		// Check for our nonce to ensure we're processing a valid order submission.
+		$nonce = check_ajax_referer( 'giftaidnonce_order', 'giftaid_order_security', false );
+
+		if ( isset( $_POST['gift_aid_reclaimed'] ) && ! empty( $nonce ) ) {
+
+			// Get our checkbox value.
+			$reclaimed = sanitize_text_field( wp_unslash( $_POST['gift_aid_reclaimed'] ) );
+
+			if ( ! empty( $reclaimed ) ) {
+				// Convert the default checkbox value to something more readable.
+				$status = ( '1' === $reclaimed ) ? __( 'Yes', 'gift-aid-for-woocommerce' ) : __( 'No', 'gift-aid-for-woocommerce' );
+
+				// Update the order post meta.
+				update_post_meta( $order_id, 'gift_aid_reclaimed', esc_attr( $status ) );
+			}
+		}
+	}
+}

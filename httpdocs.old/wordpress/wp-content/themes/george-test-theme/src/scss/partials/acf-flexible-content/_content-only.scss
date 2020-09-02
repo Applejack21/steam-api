@@ -1,0 +1,151 @@
+.section-content_only {
+	.bg {
+		padding-top: 2em;
+		padding-bottom: 2em;
+
+		@media (min-width:768px) {
+			padding-top: 4.125em;
+			padding-bottom: 3.75em;
+		}
+
+		@media (min-width:1200px) {
+			padding-top: 4.8em;
+			padding-bottom: 4.6em;
+		}
+
+		&.default {
+			background-color: $color-white;
+		}
+
+		&.grey {
+			background-color: #363636;
+			color: $color-white;
+		}
+
+		&.green {
+			background: $gradient-green-lime;
+			color: $color-white;
+		}
+	}
+
+	.container {
+		@media (min-width:375px) {
+			padding-left: 45px;
+			padding-right: 45px;
+		}
+
+		@media (min-width:768px) {
+			padding-left: 20px;
+			padding-right: 20px;
+		}
+		
+		.content {
+			.column-title {
+				font-size: 26px;
+				letter-spacing: .02em;
+
+				@media (min-width:992px) {
+					font-size: 30px;
+				}
+
+				@media (min-width:1200px) {
+					font-size: 36px;
+				}
+
+				&.left {
+					text-align: left;
+				}
+
+				&.center {
+					text-align: center;
+				}
+
+				&.right {
+					text-align: right;
+				}
+			}
+
+			.text {
+				line-height: 1.16;
+
+				@media (min-width:992px) {
+					font-size: 20px;
+				}
+
+				p {
+					margin-bottom: .5em;
+				}
+			}
+
+			.btn-wrapper {
+				&.left {
+					text-align: left;
+				}
+
+				&.center {
+					text-align: center;
+				}
+
+				&.right {
+					text-align: right;
+				}
+			}
+
+			.btn {
+				margin-top: 1em;
+			}
+		}
+
+		&.columns-single {
+			.content {
+				@media (min-width:768px) {
+					margin: auto;
+					width: 85%;
+				}
+
+				h2 {
+					font-size: 34px;
+					line-height: 1.08;
+
+					@media (min-width:411px) {
+						font-size: 38px;
+					}
+
+					@media (min-width:768px) {
+						font-size: 44px;
+					}
+
+					@media (min-width:992px) {
+						font-size: 56px;
+					}
+
+					@media (min-width:1200px) {
+						font-size: 60px;
+					}
+				}
+			}
+		}
+
+		&.columns-two {
+			@media (min-width:768px) {
+				align-items: flex-start;
+				display: flex;
+				justify-content: space-between;
+			}
+
+			.content {
+				margin: 1em 0;
+
+				@media (min-width:768px) {
+					flex-basis: 47%;
+					margin: 0;
+					width: auto;
+				}
+
+				.text {
+					
+				}
+			}
+		}
+	}
+}

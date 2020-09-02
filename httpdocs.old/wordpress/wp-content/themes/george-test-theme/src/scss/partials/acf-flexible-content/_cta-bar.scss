@@ -1,0 +1,39 @@
+.section-cta_bar {
+	background: $color-white;
+	padding-top: 2em;
+	padding-bottom: 2em;
+
+	@media (min-width:1200px) {
+		padding-top: 2.7em;
+		padding-bottom: 2.7em;
+	}
+
+	.container {
+		text-align: center;
+
+		.text {
+			display: block;
+			font-weight: 700;
+			margin-bottom: 1em;
+			text-transform: uppercase;
+
+			@media (min-width:768px) {
+				display: inline-block;
+				margin-bottom: 0;
+			}
+
+			@media (min-width:1200px) {
+				font-size: 1.33em;
+			}
+		}
+
+		.btn {
+			color: $color-white;
+			min-width: 220px;
+
+			@media (min-width:768px) {
+				margin-left: 1em;
+			}
+		}
+	}
+}

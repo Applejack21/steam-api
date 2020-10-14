@@ -18,7 +18,6 @@ var Homepage = {
     },
     
     findSteamInfo: function(e) {
-//steam api key: 4ED65AEE0156EB52A5A90EB5223C6566
         e.preventDefault();
         
         var payload = new FormData(), 

@@ -10,6 +10,8 @@
 **/.svg
 **/.zip
 
+CHANGELOG.md
+.styleci.yml
 .vagrant
 .vscode
 .idea

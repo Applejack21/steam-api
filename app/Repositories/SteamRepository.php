@@ -19,18 +19,79 @@ class SteamRepository
             $response_array = $json_decode['response'];
             if(!empty($response_array['players'])) {
                 foreach($response_array['players'] as $player) {
+                    
+                    //get all the information about the user that we need - https://developer.valvesoftware.com/wiki/Steam_Web_API#GetPlayerSummaries_.28v0002.29
+                    
+                    if(isset($player['personaname'])) {
+                        $user_persona_name = $player['personaname']; //their steam profile name
+                    } else {
+                        $user_persona_name = "";
+                    }
+                    
+                    if(isset($player['avatarfull'])) {
+                        $user_avatar = $player['avatarfull']; //their steam avatar
+                    } else {
+                        $user_avatar = "";
+                    }
+                    
+                    if(isset($player['personastate'])) {
+                        $user_persona_state = $player['personastate']; //their steam status (online/offline) - more persona states can be find in the api doc above
+                    } else {
+                        $user_persona_state = "";
+                    }
+                    
+                    if($user_persona_state <= 1) {
+                        $user_persona_state = "Online"; //just use online for now, keep it simple.
+                    } else {
+                        $user_persona_state = "Offline";
+                    }
+                    
+                    if(isset($player['realname'])) {
+                        $user_real_name = $player['realname']; //their steam "real name"
+                    } else  {
+                        $user_real_name = "";
+                    }
+                    
+                    if(isset($player['timecreated'])) {
+                        $unix_time_created = $player['timecreated']; //seconds since unix time they made their steam account
+                        $user_time_created = gmdate("d-M-Y", $unix_time_created); //converted to date.
+                        $user_time_created_full = gmdate("d-M-Y - H:i:s", $unix_time_created); //full created date and time
+                    } else {
+                        $user_time_created = "";
+                        $user_time_created_full = "";
+                    }
+                    
+                    if(isset($player['loccountrycode'])) {
+                        $user_country_code = $player['loccountrycode']; //their country code
+                    } else {
+                        $user_country_code = "";
+                    }
+                    
+                    if(isset($player['gameextrainfo'])) {
+                        $user_current_game = $player['gameextrainfo']; //name of the current game they're playing
+                        $user_current_game_id = $player['gameid']; //the id of the game they're playing
+                    } else {
+                        $user_current_game = "";
+                        $user_current_game_id = "";
+                    }
+                    
                     $json_data[] = array(
-                        'json_person_name' => $player['personaname'],
-                        'json_avatar_full' => $player['avatarfull'],
-                        'json_persona_state' => $player['personastate'],
-                        'json_real_name' => $player['realname'],
-                        'json_time_created' => $player['timecreated'], //seconds since unix time
-                        'json_country_code' => $player['loccountrycode']
+                        'json_person_name' => $user_persona_name,
+                        'json_avatar_full' => $user_avatar,
+                        'json_persona_state' => $user_persona_state,
+                        'json_real_name' => $user_real_name,
+                        'json_time_created' => $user_time_created,
+                        'json_time_created_full' => $user_time_created_full,
+                        'json_country_code' => $user_country_code,
+                        'json_current_game' => $user_current_game,
+                        'json_current_game_id' => $user_current_game_id
                     );
                 }
+                return $json_data; 
+            } else {
+                return;
             }
         }
-        return $json_data;
     }
 }
 

@@ -38,7 +38,7 @@ class GeneralController extends Controller
             return response()->json(['error' => $validator->errors()], $this->fail_status);
         } else {
             $find_steam_id = $this->steam->findSteamId($request);
-            if(!$find_steam_id) {
+            if(!isset($find_steam_id)) {
                 return response()->json(['success' => false], $this->error_status);
             } else {
                 return response()->json(['success' => true, 'steam_data' => $find_steam_id], $this->success_status);

@@ -22,7 +22,7 @@ var Homepage = {
         
         var payload = new FormData(), 
             find_steam_info_button = $('#find-steam-id'),
-            steam_user_id = $('#steam-user-id').val(),
+            steam_user_id = $('#steam-user-id-input-box').val(),
             find_steam_id_div = $('.how-to-find-steam-id'),
             steam_id_results_div = $('.steam-id-results'),
             results_steam_avatar = $('#steam-avatar'),

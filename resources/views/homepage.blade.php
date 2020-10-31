@@ -1,17 +1,52 @@
 @section('title', 'Steam Account Lookup')
 @extends('layouts.master')
 @section('content')
+
     <body class="dash-homepage">
-        <h1>Steam Account Lookup</h1>
-        <p>Want to know information about your Steam statistics? Type in your Steam ID number below!</p>
-        <div class="module-body">
+        <div class="account-page-heading">
+            <h1>Steam Account Lookup</h1>
+            <h4>Want to know information about your Steam account? Type in your Steam ID number below!</h4>
+            <p>Don't know what your Steam ID is? Click below to find out how.</p>
+            <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#findSteamIDModal">
+                How to find your Steam ID
+            </button>
+        </div>
+        <div class="modal fade" id="findSteamIDModal" tabindex="-1" role="dialog">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="findSteamIDModalLongTitle"><b>How to find your Steam ID</b></h5>
+                    </div>
+                    <div class="modal-body">
+                        <p>Finding your Steam ID depends on your Steam profile URL.</p>
+                        <div class="how-to-find-noncustom-url">
+                            <h5><u>Non-custom profile URL</u></h5>
+                            <p>If you don't have a custom profile URL, then your Steam ID will be the digits at the end of your Steam profile URL.</p>
+                            <p>e.g. <i>https://steamcommunity.com/id/123456789...</i></p>
+                        </div>
+                        <div class="how-to-find-custom-url">
+                            <h5><u>Custom profile URL</u></h5>
+                            <p>If you have a custom profile URL, then this will be a little different. Follow the steps below to find your Steam ID.</p>
+                            <ol>
+                                <li>Copy your custom Steam profile URL, e.g. <i>https://steamcommunity.com/id/customsteamurl</i></li>
+                                <li>Go to <a class="hyperlink" target="_blank" href="https://steamid.io/">steamid.io</a> and enter your URL and click "lookup"</li>
+                                <li>Copy your "steamID64" and paste it into the search box below.</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Got it!</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="module-body form form--padding-top">
             <form class="form-horizontal row-fluid" method="post" enctype="multipart/form-data">
                 @csrf
                 <div class="form-body">
                     <div class="control-group">
-                        <label class="control-label" for="steam-user-id">Steam ID:</label>
                         <div class="controls row-fluid">
-                            <input type="text" id="steam-user-id">
+                            <input type="text" id="steam-user-id-input-box" class="input--border-curved input--font-large" maxlength="17" placeholder="Enter Steam ID here...">  
                         </div>
                     </div><br>
                     <div class="control-group">
@@ -36,26 +71,6 @@
             <p id="steam-real-name"></p>
             <p id="steam-created"></p>
             <p id="steam-country"></p>
-        </div>
-        
-        <div class="how-to-find-steam-id" style="display:inline-block;">
-            <h2><u>How to find your Steam ID</u></h2>
-            <p>Finding your Steam ID number depends on your Steam profile URL properties.</p>
-            <div class="how-to-find-noncustom-url">
-                <h4><u>Non-custom Steam profile URL</u></h4>
-                <p>If you don't have a custom Steam profile URL, then your Steam ID will be the digits at the end of your Steam profile URL.</p>
-                <p>e.g. <i>https://steamcommunity.com/id/123456789...</i></p>
-            </div>
-            
-            <div class="how-to-find-custom-url">
-                <h4><u>Custom Steam profile URL</u></h4>
-                <p>If you have a custom Steam profile URL, this will be a little different. Follow the steps below to find your Steam ID.</p>
-                <ol>
-                    <li>Copy your custom Steam profile URL, e.g. <i>https://steamcommunity.com/id/customsteamurl</i></li>
-                    <li>Go to <a class="hyperlink" target="_blank" href="https://steamid.io/">steamid.io</a> and enter your URL and click "lookup"</li>
-                    <li>Copy your "steamID64" and paste it into the textbox at the top of this page.</li>
-                </ol>
-            </div>
         </div>
         <div id="end-row"><br><br><br></div>
     </body>

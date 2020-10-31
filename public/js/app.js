@@ -27,11 +27,11 @@ var Homepage = {
             steam_id_results_div = $('.steam-id-results'),
             results_steam_avatar = $('#steam-avatar'),
             valid = true;
-            
+        
         find_steam_info_button.prop('disabled', true);
         find_steam_info_button.find('.fa-spin').css("visibility", "visible");
         find_steam_info_button.closest('.module-body').find('.alert').hide();
-        
+                
         if((steam_user_id === "")) {
             valid = false;
         }
@@ -51,22 +51,18 @@ var Homepage = {
                 contentType: false,
                 processData: false,
                 success:function(data) {
-                    if('success' in data) {
-                        if(data.success) {
-                            find_steam_id_div.css("display", "none");
-                            steam_id_results_div.css("display", "inline-block");
+                    if(data.status === 200) {
+                        find_steam_id_div.css("display", "none");
+                        steam_id_results_div.css("display", "inline-block");
                             
-                            steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data[0]['json_person_name']+"</h3>");
-                            results_steam_avatar.attr('src', data.steam_data[0]['json_avatar_full']);
-                            steam_id_results_div.append("<p id='steam-user-status'>"+data.steam_data[0]['json_persona_state']+"</p>");
-                            console.log (data.steam_data[0]['json_real_name']);
-                            console.log (data.steam_data[0]['json_time_created']);
-                            console.log (data.steam_data[0]['json_country_code']);
+                        steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data[0]['json_person_name']+"</h3>");
+                        results_steam_avatar.attr('src', data.steam_data[0]['json_avatar_full']);
+                        steam_id_results_div.append("<p id='steam-user-status'>"+data.steam_data[0]['json_persona_state']+"</p>");
+                        console.log (data.steam_data[0]['json_real_name']);
+                        console.log (data.steam_data[0]['json_time_created']);
+                        console.log (data.steam_data[0]['json_country_code']);
                             
-                            find_steam_info_button.closest('.module-body').find('.user-found').show();
-                        } else {
-                            find_steam_info_button.closest('.module-body').find('.user-not-found').show();
-                        }
+                        find_steam_info_button.closest('.module-body').find('.user-found').show();
                     } else {
                         find_steam_info_button.closest('.module-body').find('.user-not-found').show();
                     }
@@ -75,7 +71,12 @@ var Homepage = {
                     find_steam_info_button.prop('disabled', false);
                 },
                 error: function(data) {
-                    find_steam_info_button.closest('.module-body').find('.general-error').show();
+                    if(data.status === 400) {
+                        find_steam_info_button.closest('.module-body').find('.user-not-found').show(); //will show if the user enters anything other than digits
+                    } else if (data.status === 500) {
+                        find_steam_info_button.closest('.module-body').find('.general-error').show(); //will show if there was an error finding a user with the digits provided
+                    }
+                
                     find_steam_info_button.find('.fa-spin').css("visibility", "hidden");
                     find_steam_info_button.prop('disabled', false);
                 }

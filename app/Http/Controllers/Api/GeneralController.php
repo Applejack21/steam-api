@@ -31,17 +31,17 @@ class GeneralController extends Controller
     public function findSteamId(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'steam_id' => 'required'
+            'steam_id' => 'required|numeric'
         ]);
         
         if($validator->fails()) {
-            return response()->json(['error' => $validator->errors()], $this->fail_status);
+            return response()->json(['status' => $this->fail_status], $this->fail_status);
         } else {
             $find_steam_id = $this->steam->findSteamId($request);
             if(!isset($find_steam_id)) {
-                return response()->json(['success' => false], $this->error_status);
+                return response()->json(['status' => $this->error_status], $this->error_status);
             } else {
-                return response()->json(['success' => true, 'steam_data' => $find_steam_id], $this->success_status);
+                return response()->json(['status' => $this->success_status, 'steam_data' => $find_steam_id], $this->success_status);
             }
         }
     }

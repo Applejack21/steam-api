@@ -5,7 +5,7 @@
     <body class="dash-homepage">
         <div class="account-page-heading">
             <h1>Steam Account Lookup</h1>
-            <h4>Want to know information about your Steam account? Type in your Steam ID number below!</h4>
+            <h4>Want to know information about your Steam account? Type in your Steam ID below!</h4>
             <p>Don't know what your Steam ID is? Click below to find out how.</p>
             <button type="button" class="btn btn-secondary" data-toggle="modal" data-target="#findSteamIDModal">
                 How to find your Steam ID
@@ -55,15 +55,15 @@
                     <div class="control-group">
                         <button type="submit" class="btn btn-primary" name="submitBtn" id="find-steam-id">   
                             <i class="fas fa-search"></i>
-                            Find Steam Stats
+                            <span>Find Steam Stats</span>
                             <i class="fas fa-spinner fa-spin" style="visibility:hidden;"></i>
                         </button>
                     </div>
                 </div>
             </form><br>
-            <div class="alert alert-danger general-error" style="display:none;"><strong>Warning!</strong> Something went wrong, please try again.</div>
+            <div class="alert alert-danger general-error" style="display:none;"><strong>Warning!</strong> Something went wrong. Please make sure you've entered a valid Steam ID or check <a href="https://steamstat.us/" target="_blank">steamstat.us</a> to see if the "Steam Web API" is up and running.</div>
             <div class="alert alert-danger empty-id" style="display:none;"><strong>Warning!</strong> Please enter a Steam ID.</div>
-            <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> User not found. Please enter a valid Steam ID.</div>
+            <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> Please enter a valid Steam ID. Steam IDs are digits only.</div>
             <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found!</div>
         </div>
         

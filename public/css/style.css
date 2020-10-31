@@ -1,6 +1,6 @@
 /* Code to change background colour */
 body {
-    background-color:#fefefe;
+    background-color:#eeeeee;
 }
 
 /* Code to format the navigation menu */
@@ -9,24 +9,18 @@ body {
 }
 
 nav.header-nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
     background-color:#2e6e9e;
-    padding-top:5px;
 }
 
 nav a {
     display: inline-block;
     color: #fefefe;
-    text-align: center;
-    padding: 14px 16px;
+    padding: 16px;
     text-decoration: none;
 }
 
 nav a:hover {
-    background-color: #e17009;
+    background-color: #2e9e9b;
     color: #fefefe;
 }
 

@@ -11,12 +11,11 @@
 </head>
     
 <body>
-@section('header')        
+@section('header')
     <nav class="header-nav">
         <li id="home"><a href="{{url('steam/home')}}">Steam Account Lookup</a></li>
     </nav>
     @show
-    <br>
     <br>
         <div class="container">
             @yield('content')

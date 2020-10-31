@@ -16,21 +16,24 @@
                 <div class="modal-content">
                     <div class="modal-header">
                         <h5 class="modal-title" id="findSteamIDModalLongTitle"><b>How to find your Steam ID</b></h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
                     </div>
                     <div class="modal-body">
                         <p>Finding your Steam ID depends on your Steam profile URL.</p>
                         <div class="how-to-find-noncustom-url">
                             <h5><u>Non-custom profile URL</u></h5>
-                            <p>If you don't have a custom profile URL, then your Steam ID will be the digits at the end of your Steam profile URL.</p>
+                            <p>If you don't have a custom profile URL, then your Steam ID will be the digits at the end of your profile URL.</p>
                             <p>e.g. <i>https://steamcommunity.com/id/123456789...</i></p>
                         </div>
                         <div class="how-to-find-custom-url">
                             <h5><u>Custom profile URL</u></h5>
-                            <p>If you have a custom profile URL, then this will be a little different. Follow the steps below to find your Steam ID.</p>
+                            <p>If you have a custom profile URL, then this will be a little bit different. Follow these steps to find your Steam ID:</p>
                             <ol>
-                                <li>Copy your custom Steam profile URL, e.g. <i>https://steamcommunity.com/id/customsteamurl</i></li>
+                                <li>Copy your custom profile URL, e.g. <i>https://steamcommunity.com/id/customsteamurl</i></li>
                                 <li>Go to <a class="hyperlink" target="_blank" href="https://steamid.io/">steamid.io</a> and enter your URL and click "lookup"</li>
-                                <li>Copy your "steamID64" and paste it into the search box below.</li>
+                                <li>Copy your "steamID64" and paste it into the search box.</li>
                             </ol>
                         </div>
                     </div>

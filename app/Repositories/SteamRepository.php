@@ -36,7 +36,7 @@ class SteamRepository
                     
                     if(isset($player['personastate'])) {
                         $user_persona_state = $player['personastate']; //their steam status (online/offline) - more persona states can be find in the api doc above
-                        if($user_persona_state <= 1) {
+                        if($user_persona_state >= 1) {
                             $user_persona_state = "Online"; //just use online for now, keep it simple.
                         } else {
                             $user_persona_state = "Offline";

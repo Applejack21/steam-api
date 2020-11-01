@@ -25,9 +25,10 @@ var Homepage = {
             steam_user_id = $('#steam-user-id-input-box').val(),
             find_steam_id_div = $('.how-to-find-steam-id'),
             steam_id_results_div = $('.steam-id-results'),
+            steam_avatar_div = $('.steam-avatar-div'),
             results_steam_avatar = $('#steam-avatar'),
             valid = true;
-        
+                
         find_steam_info_button.prop('disabled', true);
         find_steam_info_button.find('.fa-spin').css("visibility", "visible");
         find_steam_info_button.closest('.module-body').find('.alert').hide();
@@ -52,8 +53,12 @@ var Homepage = {
                 processData: false,
                 success:function(data) {
                     if(data.status === 200) {
-                        find_steam_id_div.css("display", "none");
+                        
+                        steam_id_results_div.empty(); //remove the previous steam id results
+                        results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
+                        
                         steam_id_results_div.css("display", "inline-block");
+                        steam_avatar_div.css("display", "inline-block");
                             
                         steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data[0]['json_person_name']+"</h3>");
                         results_steam_avatar.attr('src', data.steam_data[0]['json_avatar_full']);

@@ -36,16 +36,15 @@ class SteamRepository
                     
                     if(isset($player['personastate'])) {
                         $user_persona_state = $player['personastate']; //their steam status (online/offline) - more persona states can be find in the api doc above
+                        if($user_persona_state <= 1) {
+                            $user_persona_state = "Online"; //just use online for now, keep it simple.
+                        } else {
+                            $user_persona_state = "Offline";
+                        }
                     } else {
                         $user_persona_state = "";
                     }
-                    
-                    if($user_persona_state <= 1) {
-                        $user_persona_state = "Online"; //just use online for now, keep it simple.
-                    } else {
-                        $user_persona_state = "Offline";
-                    }
-                    
+                                    
                     if(isset($player['realname'])) {
                         $user_real_name = $player['realname']; //their steam "real name"
                     } else  {
@@ -54,8 +53,8 @@ class SteamRepository
                     
                     if(isset($player['timecreated'])) {
                         $unix_time_created = $player['timecreated']; //seconds since unix time they made their steam account
-                        $user_time_created = gmdate("d-M-Y", $unix_time_created); //converted to date.
-                        $user_time_created_full = gmdate("d-M-Y - H:i:s", $unix_time_created); //full created date and time
+                        $user_time_created = gmdate("dS F Y", $unix_time_created); //converted to date.
+                        $user_time_created_full = gmdate("dS F Y - H:i:s", $unix_time_created); //full created date and time
                     } else {
                         $user_time_created = "";
                         $user_time_created_full = "";

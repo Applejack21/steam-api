@@ -61,20 +61,24 @@
                     </div>
                 </div>
             </form><br>
-            <div class="alert alert-danger general-error" style="display:none;"><strong>Warning!</strong> Something went wrong. Please make sure you've entered a valid Steam ID or check <a href="https://steamstat.us/" target="_blank">steamstat.us</a> to see if the "Steam Web API" is up and running.</div>
+            <div class="alert alert-danger general-error" style="display:none;"><strong>Warning!</strong> Something went wrong. Please make sure you've entered a valid Steam ID. And if so, check <a href="https://steamstat.us/" target="_blank">steamstat.us</a> to see if the "Steam Web API" is up and running.</div>
             <div class="alert alert-danger empty-id" style="display:none;"><strong>Warning!</strong> Please enter a Steam ID.</div>
             <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> Please enter a valid Steam ID. Steam IDs are digits only.</div>
             <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found!</div>
         </div>
         
+        <div class="steam-avatar-div" style="display:none;">
+            <img id="steam-avatar" alt="steam avatar">
+        </div>
+        
         <div class="steam-id-results" style="display:none;">
             <h3 id="steam-name"></h3>
-            <img id="steam-avatar" alt="steam avatar">
             <p id="steam-user-status"></p>
             <p id="steam-real-name"></p>
             <p id="steam-created"></p>
             <p id="steam-country"></p>
         </div>
+
         <div id="end-row"><br><br><br></div>
     </body>
 @endsection

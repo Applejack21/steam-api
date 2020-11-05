@@ -55,7 +55,7 @@
                     <div class="control-group">
                         <button type="submit" class="btn btn-primary" name="submitBtn" id="find-steam-id">   
                             <i class="fas fa-search"></i>
-                            <span id="find-steam-id-button-text"> Find Steam Account</span>
+                            <span id="find-steam-id-button-text">Find Steam Account</span>
                             <i class="fas fa-spinner fa-spin" style="visibility:hidden;"></i>
                         </button>
                     </div>
@@ -71,7 +71,7 @@
             <img id="steam-avatar" alt="steam avatar">
         </div>
         
-        <div class="steam-id-results" style="display:none;">
+        <div class="steam-id-results" style="display:none;padding-left:10px;">
             <h3 id="steam-name"></h3>
             <p id="steam-user-status"></p>
             <p id="steam-real-name"></p>

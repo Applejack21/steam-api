@@ -27,8 +27,10 @@ var Homepage = {
             steam_id_results_div = $('.steam-id-results'),
             steam_avatar_div = $('.steam-avatar-div'),
             results_steam_avatar = $('#steam-avatar'),
+            steam_id_button_text = $('#find-steam-id-button-text'),
             valid = true;
                 
+        steam_id_button_text.text('Searching... ');
         find_steam_info_button.prop('disabled', true);
         find_steam_info_button.find('.fa-spin').css("visibility", "visible");
         find_steam_info_button.closest('.module-body').find('.alert').hide();
@@ -41,6 +43,7 @@ var Homepage = {
             find_steam_info_button.closest('.module-body').find('.empty-id').show();
             find_steam_info_button.find('.fa-spin').css("visibility", "hidden");
             find_steam_info_button.prop('disabled', false);
+            steam_id_button_text.text('Find Steam Account');
         } else {
             payload.append("steam_id", steam_user_id.trim());
             
@@ -54,16 +57,30 @@ var Homepage = {
                 success:function(data) {
                     if(data.status === 200) {
                         
+console.log(data.steam_data[0]);
                         steam_id_results_div.empty(); //remove the previous steam id results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
                         
                         steam_id_results_div.css("display", "inline-block");
                         steam_avatar_div.css("display", "inline-block");
-                            
-                        steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data[0]['json_person_name']+"</h3>");
+                        
+                        //display steam id results
                         results_steam_avatar.attr('src', data.steam_data[0]['json_avatar_full']);
-                        steam_id_results_div.append("<p id='steam-user-status'>"+data.steam_data[0]['json_persona_state']+"</p>");
-                        console.log (data.steam_data[0]['json_real_name']);
+            
+                        if(data.steam_data[0]['json_real_name'] !== "") {
+                            steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data[0]['json_person_name']+"<span id='steam-real-name' class='text--colour-grey'> ("+data.steam_data[0]['json_real_name']+")</span></h3>");
+                        } else {
+                             steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data[0]['json_person_name']+"</h3>");
+                        }
+                       
+                        if(data.steam_data[0]['json_persona_state'] === "Online") {
+                            steam_id_results_div.append("<i class='fas fa-circle fa-circle-online'></i><span id='steam-user-status'> "+data.steam_data[0]['json_persona_state']+"</span>");
+                        } else {
+                            steam_id_results_div.append("<i class='fas fa-circle fa-circle-offline'></i><span id='steam-user-status'> "+data.steam_data[0]['json_persona_state']+"</span>");
+                        }
+                        
+                        steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created'> "+data.steam_data[0]['json_time_created']+"</span></p>");
+
                         console.log (data.steam_data[0]['json_time_created']);
                         console.log (data.steam_data[0]['json_country_code']);
                             
@@ -72,6 +89,7 @@ var Homepage = {
                         find_steam_info_button.closest('.module-body').find('.user-not-found').show();
                     }
                     
+                    steam_id_button_text.text('Find Steam Account');
                     find_steam_info_button.find('.fa-spin').css("visibility", "hidden");
                     find_steam_info_button.prop('disabled', false);
                 },
@@ -82,6 +100,7 @@ var Homepage = {
                         find_steam_info_button.closest('.module-body').find('.general-error').show(); //will show if there was an error finding a user with the digits provided
                     }
                 
+                    steam_id_button_text.text('Find Steam Account');
                     find_steam_info_button.find('.fa-spin').css("visibility", "hidden");
                     find_steam_info_button.prop('disabled', false);
                 }

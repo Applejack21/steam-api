@@ -39,3 +39,15 @@ nav a:hover {
 .form--padding-top {
     padding-top:15px;
 }
+
+.text--colour-grey {
+    color:grey;
+}
+
+.fa-circle-online {
+  color: green;
+}
+
+.fa-circle-offline {
+    color: grey;
+}

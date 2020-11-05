@@ -55,7 +55,7 @@
                     <div class="control-group">
                         <button type="submit" class="btn btn-primary" name="submitBtn" id="find-steam-id">   
                             <i class="fas fa-search"></i>
-                            <span>Find Steam Stats</span>
+                            <span id="find-steam-id-button-text"> Find Steam Account</span>
                             <i class="fas fa-spinner fa-spin" style="visibility:hidden;"></i>
                         </button>
                     </div>

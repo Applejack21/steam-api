@@ -79,9 +79,8 @@ console.log(data.steam_data[0]);
                             steam_id_results_div.append("<i class='fas fa-circle fa-circle-offline'></i><span id='steam-user-status'> "+data.steam_data[0]['json_persona_state']+"</span>");
                         }
                         
-                        steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created'> "+data.steam_data[0]['json_time_created']+"</span></p>");
-
-                        console.log (data.steam_data[0]['json_time_created']);
+                        steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created' data-toggle='tooltip' data-placement='right' title='"+data.steam_data[0]['json_time_created_full']+"'> "+data.steam_data[0]['json_time_created']+"</span></p>");
+                        
                         console.log (data.steam_data[0]['json_country_code']);
                             
                         find_steam_info_button.closest('.module-body').find('.user-found').show();

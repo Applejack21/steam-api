@@ -66,7 +66,7 @@
             <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> Please enter a valid Steam ID. Steam IDs are digits only.</div>
             <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found!</div>
         </div>
-        
+    
         <div class="steam-avatar-div" style="display:none;">
             <img id="steam-avatar" alt="steam avatar">
         </div>

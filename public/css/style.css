@@ -51,3 +51,8 @@ nav a:hover {
 .fa-circle-offline {
     color: grey;
 }
+
+.steam-overall-results {
+  display: flex;
+  flex-wrap: wrap;
+}

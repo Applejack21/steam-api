@@ -67,18 +67,13 @@
             <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found!</div>
         </div>
     
-        <div class="steam-avatar-div" style="display:none;">
-            <img id="steam-avatar" alt="steam avatar">
-        </div>
+        <div class="steam-overall-results">
+            <div class="steam-avatar-div" style="display:none;">
+                <img id="steam-avatar" alt="Steam Avatar">
+            </div>
         
-        <div class="steam-id-results" style="display:none;padding-left:10px;">
-            <h3 id="steam-name"></h3>
-            <p id="steam-user-status"></p>
-            <p id="steam-real-name"></p>
-            <p id="steam-created"></p>
-            <p id="steam-country"></p>
+            <div class="steam-id-results-div" style="display:none;padding-left:10px;"></div>
         </div>
-
         <div id="end-row"><br><br><br></div>
     </body>
 @endsection

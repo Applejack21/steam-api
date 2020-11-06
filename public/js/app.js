@@ -24,7 +24,7 @@ var Homepage = {
             find_steam_info_button = $('#find-steam-id'),
             steam_user_id = $('#steam-user-id-input-box').val(),
             find_steam_id_div = $('.how-to-find-steam-id'),
-            steam_id_results_div = $('.steam-id-results'),
+            steam_id_results_div = $('.steam-id-results-div'),
             steam_avatar_div = $('.steam-avatar-div'),
             results_steam_avatar = $('#steam-avatar'),
             steam_id_button_text = $('#find-steam-id-button-text'),
@@ -57,13 +57,11 @@ var Homepage = {
                 success:function(data) {
                     if(data.status === 200) {
                         
-console.log(data.steam_data[0]);
                         steam_id_results_div.empty(); //remove the previous steam id results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
                         
-                        steam_id_results_div.css("display", "inline-block");
                         steam_avatar_div.css("display", "inline-block");
-                        
+                        steam_id_results_div.css("display", "inline-block");
                         //display steam id results
                         results_steam_avatar.attr('src', data.steam_data[0]['json_avatar_full']);
             
@@ -74,15 +72,15 @@ console.log(data.steam_data[0]);
                         }
                        
                         if(data.steam_data[0]['json_persona_state'] === "Online") {
-                            steam_id_results_div.append("<i class='fas fa-circle fa-circle-online'></i><span id='steam-user-status'> "+data.steam_data[0]['json_persona_state']+"</span>");
+                            steam_id_results_div.append("<p><i class='fas fa-circle fa-circle-online'></i><span id='steam-user-status'> "+data.steam_data[0]['json_persona_state']+"</span></p>");
                         } else {
-                            steam_id_results_div.append("<i class='fas fa-circle fa-circle-offline'></i><span id='steam-user-status'> "+data.steam_data[0]['json_persona_state']+"</span>");
+                            steam_id_results_div.append("<p><i class='fas fa-circle fa-circle-offline'></i><span id='steam-user-status'> "+data.steam_data[0]['json_persona_state']+"</span></p>");
                         }
                         
                         steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created' data-toggle='tooltip' data-placement='right' title='"+data.steam_data[0]['json_time_created_full']+"'> "+data.steam_data[0]['json_time_created']+"</span></p>");
                         
-                        console.log (data.steam_data[0]['json_country_code']);
-                            
+                        steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-location'> "+data.steam_data[0]['json_country_code']+"</span></p>");
+                        
                         find_steam_info_button.closest('.module-body').find('.user-found').show();
                     } else {
                         find_steam_info_button.closest('.module-body').find('.user-not-found').show();

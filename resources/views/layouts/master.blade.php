@@ -21,10 +21,10 @@
         <div class="container">
             @yield('content')
         </div>  
-<script>
-$(document).ready(function() {
-    $("body").tooltip({ selector: '[data-toggle=tooltip]' });
-});
-</script>
+    <script>
+    $(document).ready(function() {
+        $("body").tooltip({ selector: '[data-toggle=tooltip]' });
+    });
+    </script>
 </body>
 </html>

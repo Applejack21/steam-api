@@ -12,9 +12,12 @@ class SteamRepository
         $steam_id = $request->steam_id;
         $api_key = env('STEAM_API_KEY');
         $api_url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$steam_id;
-    
-        $json_decode = json_decode(file_get_contents($api_url),true);
+        $countries_states_json_location = 'public/json/countries-states.min.json';
+        $countries_states_cities_json_location = 'public/json/countries-states-cities.min.json';
+        $steam_countries_json = 'public/json/steam_contries.json';
         
+        $json_decode = json_decode(file_get_contents($api_url),true);
+
         if(!empty($json_decode['response'])) {
             $response_array = $json_decode['response'];
             if(!empty($response_array['players'])) {
@@ -60,12 +63,13 @@ class SteamRepository
                         $user_time_created_full = "";
                     }
                     
-                    if(isset($player['loccountrycode'])) {
+                    if(isset($player['loccountrycode'])) {                            
                         $user_country_code = $player['loccountrycode']; //their country code
+                        $user_country_name = locale_get_display_region('-'.$user_country_code,'en'); //their country name
                     } else {
                         $user_country_code = "";
                     }
-                    
+                                
                     if(isset($player['gameextrainfo'])) {
                         $user_current_game = $player['gameextrainfo']; //name of the current game they're playing
                         $user_current_game_id = $player['gameid']; //the id of the game they're playing
@@ -82,6 +86,7 @@ class SteamRepository
                         'json_time_created' => $user_time_created,
                         'json_time_created_full' => $user_time_created_full,
                         'json_country_code' => $user_country_code,
+                        'json_country_name' => $user_country_name,
                         'json_current_game' => $user_current_game,
                         'json_current_game_id' => $user_current_game_id
                     );

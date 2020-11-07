@@ -68,8 +68,14 @@ class SteamRepository
                         $user_country_name = locale_get_display_region('-'.$user_country_code,'en'); //their country name
                     } else {
                         $user_country_code = "";
+                        $user_country_name = "";
                     }
-                                
+                    
+                    $steam_countries = json_decode(file_get_contents(base_path($steam_countries_json)),true);
+                    
+//$steam_countries[$user_country_code]['states']['18'];
+//$steam_countries[$user_country_code]['states']['18']['name'];       
+             
                     if(isset($player['gameextrainfo'])) {
                         $user_current_game = $player['gameextrainfo']; //name of the current game they're playing
                         $user_current_game_id = $player['gameid']; //the id of the game they're playing

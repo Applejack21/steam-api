@@ -79,7 +79,9 @@ var Homepage = {
                         
                         steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created' data-toggle='tooltip' data-placement='right' title='"+data.steam_data[0]['json_time_created_full']+"'> "+data.steam_data[0]['json_time_created']+"</span></p>");
                         
-                        steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-location'> "+data.steam_data[0]['json_country_code']+"</span></p>");
+                        if(data.steam_data[0]['json_country_code'] !== "") {
+                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
+                        }
                         
                         find_steam_info_button.closest('.module-body').find('.user-found').show();
                     } else {

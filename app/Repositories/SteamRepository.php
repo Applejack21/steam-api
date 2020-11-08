@@ -71,10 +71,12 @@ class SteamRepository
                         $user_country_name = "";
                     }
                     
-                    $steam_countries = json_decode(file_get_contents(base_path($steam_countries_json)),true);
-                    
-//$steam_countries[$user_country_code]['states']['18'];
-//$steam_countries[$user_country_code]['states']['18']['name'];       
+                    if(isset($player['locstatecode'])) {
+                        $user_state_code = $player['locstatecode']; //their state code
+                        
+                        $steam_countries = json_decode(file_get_contents(base_path($steam_countries_json)),true);
+                        $user_state_name = $steam_countries[$user_country_code]['states'][$user_state_code]['name']; //name of their town they're in.
+                    }      
              
                     if(isset($player['gameextrainfo'])) {
                         $user_current_game = $player['gameextrainfo']; //name of the current game they're playing
@@ -93,6 +95,7 @@ class SteamRepository
                         'json_time_created_full' => $user_time_created_full,
                         'json_country_code' => $user_country_code,
                         'json_country_name' => $user_country_name,
+                        'json_state_name' => $user_state_name,
                         'json_current_game' => $user_current_game,
                         'json_current_game_id' => $user_current_game_id
                     );

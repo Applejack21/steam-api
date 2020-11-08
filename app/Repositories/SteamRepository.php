@@ -12,9 +12,7 @@ class SteamRepository
         $steam_id = $request->steam_id;
         $api_key = env('STEAM_API_KEY');
         $api_url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$steam_id;
-        $countries_states_json_location = 'public/json/countries-states.min.json';
-        $countries_states_cities_json_location = 'public/json/countries-states-cities.min.json';
-        $steam_countries_json = 'public/json/steam_contries.json';
+        $steam_countries_json = 'public/json/steam_countries.min.json';
         
         $json_decode = json_decode(file_get_contents($api_url),true);
 
@@ -75,8 +73,19 @@ class SteamRepository
                         $user_state_code = $player['locstatecode']; //their state code
                         
                         $steam_countries = json_decode(file_get_contents(base_path($steam_countries_json)),true);
-                        $user_state_name = $steam_countries[$user_country_code]['states'][$user_state_code]['name']; //name of their town they're in.
-                    }      
+                        $user_state_name = $steam_countries[$user_country_code]['states'][$user_state_code]['name']; //name of the town they're in. the user has to have a country code to pick a state location on their steam profile
+                    } else {
+                        $user_state_name = "";
+                    }
+                    
+                    if(isset($player['loccityid'])) {
+                        $user_city_id = $player['loccityid']; //their city id
+                        
+                        $steam_countries = json_decode(file_get_contents(base_path($steam_countries_json)),true);
+                        $user_city_name = $steam_countries[$user_country_code]['states'][$user_state_code]['cities'][$user_city_id]['name']; //name of the city they're in. the user has to have a statecode and a countrycode to pick a city location on their steam profile
+                    } else {
+                        $user_city_name = "";
+                    }
              
                     if(isset($player['gameextrainfo'])) {
                         $user_current_game = $player['gameextrainfo']; //name of the current game they're playing
@@ -96,6 +105,7 @@ class SteamRepository
                         'json_country_code' => $user_country_code,
                         'json_country_name' => $user_country_name,
                         'json_state_name' => $user_state_name,
+                        'json_city_name' => $user_city_name,
                         'json_current_game' => $user_current_game,
                         'json_current_game_id' => $user_current_game_id
                     );

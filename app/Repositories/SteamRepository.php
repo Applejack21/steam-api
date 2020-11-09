@@ -62,7 +62,6 @@ class SteamRepository
                     }
                     
                     if(isset($player['loccountrycode'])) {  
-Log::info("country code");
                         $user_country_code = $player['loccountrycode']; //their country code
                         $user_country_name = locale_get_display_region('-'.$user_country_code,'en'); //their country name
                     } else {

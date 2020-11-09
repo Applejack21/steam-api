@@ -74,8 +74,10 @@ class SteamRepository
                         
                         $steam_countries = json_decode(file_get_contents(base_path($steam_countries_json)),true);
                         $user_state_name = $steam_countries[$user_country_code]['states'][$user_state_code]['name']; //name of the town they're in. the user has to have a country code to pick a state location on their steam profile
+                        $user_location_coordinates = $steam_countries[$user_country_code]['states'][$user_state_code]['coordinates'];
                     } else {
                         $user_state_name = "";
+                        $user_location_coordinates = "";
                     }
                     
                     if(isset($player['loccityid'])) {
@@ -83,8 +85,10 @@ class SteamRepository
                         
                         $steam_countries = json_decode(file_get_contents(base_path($steam_countries_json)),true);
                         $user_city_name = $steam_countries[$user_country_code]['states'][$user_state_code]['cities'][$user_city_id]['name']; //name of the city they're in. the user has to have a statecode and a countrycode to pick a city location on their steam profile
+                        $user_location_coordinates = $steam_countries[$user_country_code]['states'][$user_state_code]['cities'][$user_city_id]['coordinates'];
                     } else {
                         $user_city_name = "";
+                        $user_location_coordinates = "";
                     }
              
                     if(isset($player['gameextrainfo'])) {
@@ -106,6 +110,7 @@ class SteamRepository
                         'json_country_name' => $user_country_name,
                         'json_state_name' => $user_state_name,
                         'json_city_name' => $user_city_name,
+                        'json_location_coordinates' => $user_location_coordinates,
                         'json_current_game' => $user_current_game,
                         'json_current_game_id' => $user_current_game_id
                     );

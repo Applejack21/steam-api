@@ -77,14 +77,14 @@ var Homepage = {
                             steam_id_results_div.append("<p><i class='fas fa-circle fa-circle-offline'></i><span id='steam-user-status'> "+data.steam_data[0]['json_persona_state']+"</span></p>");
                         }
                         
-                        steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created' data-toggle='tooltip' data-placement='right' title='"+data.steam_data[0]['json_time_created_full']+"'> "+data.steam_data[0]['json_time_created']+"</span></p>");
+                        steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created' data-toggle='tooltip' data-placement='right' title='"+data.steam_data[0]['json_time_created_full']+" (UTC)'> "+data.steam_data[0]['json_time_created']+"</span></p>");
                         
                         //display city, state and country names
-                        if(data.steam_data[0]['json_city_name'] !== "") {
+                        if(data.steam_data[0]['json_city_name'] && data.steam_data[0]['json_location_coordinates'] !== "") {
                             steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-city'> "+data.steam_data[0]['json_city_name']+",</span><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
                             
                         //display state, and country name
-                        } else if(data.steam_data[0]['json_state_name'] !== "") {
+                        } else if(data.steam_data[0]['json_state_name'] && data.steam_data[0]['json_location_coordinates'] !== "") {
                             steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
                             
                         //display country name

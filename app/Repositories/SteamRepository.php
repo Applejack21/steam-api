@@ -21,6 +21,8 @@ class SteamRepository
             if(!empty($response_array['players'])) {
                 foreach($response_array['players'] as $player) {
                     
+                    $user_location_coordinates = ""; //just incase the user doesnt have a state/city displayed on their profile
+                    
                     //get all the information about the user that we need - https://developer.valvesoftware.com/wiki/Steam_Web_API#GetPlayerSummaries_.28v0002.29
                     
                     if(isset($player['personaname'])) {

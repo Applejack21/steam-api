@@ -56,6 +56,7 @@ var Homepage = {
                 processData: false,
                 success:function(data) {
                     if(data.status === 200) {
+console.log(data.steam_data[0]);
                         
                         steam_id_results_div.empty(); //remove the previous steam id results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
@@ -81,11 +82,11 @@ var Homepage = {
                         
                         //display city, state and country names
                         if(data.steam_data[0]['json_city_name'] && data.steam_data[0]['json_location_coordinates'] !== "") {
-                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-city'> "+data.steam_data[0]['json_city_name']+",</span><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
+                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='https://www.openstreetmap.org/#map=14/"+data.steam_data[0]['json_location_coordinates']+"'><span id='steam-user-city'> "+data.steam_data[0]['json_city_name']+",</span><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span></a><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
                             
                         //display state, and country name
                         } else if(data.steam_data[0]['json_state_name'] && data.steam_data[0]['json_location_coordinates'] !== "") {
-                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
+                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='https://www.openstreetmap.org/#map=14/"+data.steam_data[0]['json_location_coordinates']+"'><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</a></span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
                             
                         //display country name
                         } else if(data.steam_data[0]['json_country_name'] !== "") {

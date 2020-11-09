@@ -61,7 +61,8 @@ class SteamRepository
                         $user_time_created_full = "";
                     }
                     
-                    if(isset($player['loccountrycode'])) {                            
+                    if(isset($player['loccountrycode'])) {  
+Log::info("country code");
                         $user_country_code = $player['loccountrycode']; //their country code
                         $user_country_name = locale_get_display_region('-'.$user_country_code,'en'); //their country name
                     } else {
@@ -77,7 +78,6 @@ class SteamRepository
                         $user_location_coordinates = $steam_countries[$user_country_code]['states'][$user_state_code]['coordinates'];
                     } else {
                         $user_state_name = "";
-                        $user_location_coordinates = "";
                     }
                     
                     if(isset($player['loccityid'])) {
@@ -88,7 +88,6 @@ class SteamRepository
                         $user_location_coordinates = $steam_countries[$user_country_code]['states'][$user_state_code]['cities'][$user_city_id]['coordinates'];
                     } else {
                         $user_city_name = "";
-                        $user_location_coordinates = "";
                     }
              
                     if(isset($player['gameextrainfo'])) {
@@ -99,6 +98,12 @@ class SteamRepository
                         $user_current_game_id = "";
                     }
                     
+                    if($user_location_coordinates !== "") {
+                        $user_location_coordinates = str_replace(",","/",$user_location_coordinates); //add a slash instead of a comma for openstreetmap
+                    } else {
+                        $user_location_coordinates = ""; //just incase a place doesnt have coordinates
+                    }
+
                     $json_data[] = array(
                         'json_person_name' => $user_persona_name,
                         'json_avatar_full' => $user_avatar,

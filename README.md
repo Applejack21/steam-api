@@ -20,3 +20,7 @@ Later information to show
     + More games to be added later in development.
 
 **(Above to do list will most likely change as development goes on).**
+
+Afterwards
+-
+Once I've completed the to-do list, I'll change the JavaScript to be using React/Vue/Angular instead of jQuery/plain JavaScript. As well as change the CSS to be SCSS.

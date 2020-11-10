@@ -24,3 +24,4 @@ Later information to show
 Afterwards
 -
 Once I've completed the to-do list, I'll change the JavaScript to be using React/Vue/Angular instead of jQuery/plain JavaScript. As well as change the CSS to be SCSS.
+Also do some code cleanups to make the requests faster.

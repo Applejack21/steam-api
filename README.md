@@ -1,5 +1,22 @@
-This is built using Laravel. Currently using Laravel 8.x
+## Steam User Profile Getter Thingamajig
 
-Steam Web API testing. Get user profile information (name, avatar, account created, etc...).
+This uses the Steam User Stats (https://developer.valvesoftware.com/wiki/Steam_Web_API) API to display information about Steam users.
 
-Eventually get user's game information (hours played, achievements, etc...) and their stats within the games (csgo, dota 2, tf2, etc...).
+This is being built using Laravel. Currently using Laravel 8.x.
+
+Basic information to show
+-
+* Display basic information (~~name~~, ~~avatar~~, ~~date created~~, ~~location~~, currently playing, etc..).
+* Add link to Steam Store page of currently playing game - possibly show current price in GBP?
+* Add button to join them ingame.
+
+Later information to show
+-
+* Display user's game information (recently played games, total hours played, achievements in them, etc...).
+* Display user's stats of games:
+    + TF2 Stats - Total time played per class, buildings destroyed per class etc...
+    + CSGO Stats - Total enemies killed, Total deaths, Wins, Stats per weapon (?).
+    + Dota Stats - Total enemies killed, Total deaths, Wins, Stats per hero (?).
+    + More games to be added later in development.
+
+**(Above to do list will most likely change as development goes on).**

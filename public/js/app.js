@@ -79,17 +79,25 @@ var Homepage = {
                         
                         steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created' data-toggle='tooltip' data-placement='right' title='"+data.steam_data[0]['json_time_created_full']+" (UTC)'> "+data.steam_data[0]['json_time_created']+"</span></p>");
                         
+                        //http://www.google.co.uk/maps/place/49.46800006494457,17.11514008755796/@49.46800006494457,17.11514008755796,7z
+                        
+
+                        
                         //display city, state and country names
                         if(data.steam_data[0]['json_city_name'] && data.steam_data[0]['json_location_coordinates'] !== "") {
-                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='https://www.openstreetmap.org/#map=14/"+data.steam_data[0]['json_location_coordinates']+"'><span id='steam-user-city'> "+data.steam_data[0]['json_city_name']+",</span><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span></a><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
+                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='http://www.google.co.uk/maps/place/@"+data.steam_data[0]['json_location_coordinates']+",12z'><span id='steam-user-city'> "+data.steam_data[0]['json_city_name']+",</span><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span></a><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
                             
                         //display state, and country name
                         } else if(data.steam_data[0]['json_state_name'] && data.steam_data[0]['json_location_coordinates'] !== "") {
-                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='https://www.openstreetmap.org/#map=14/"+data.steam_data[0]['json_location_coordinates']+"'><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</a></span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
+                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='http://www.google.co.uk/maps/place/@"+data.steam_data[0]['json_location_coordinates']+",12z'><span id='steam-user-state'> "+data.steam_data[0]['json_state_name']+",</span><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</a></span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
                             
                         //display country name
                         } else if(data.steam_data[0]['json_country_name'] !== "") {
                             steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-country'> "+data.steam_data[0]['json_country_name']+"</span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data[0]['json_country_code']+")</span></p>");
+                        } 
+                        //display unknown text
+                        else {
+                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-location-unknown'> Location Unknown</span></p>");
                         }
                         
                         find_steam_info_button.closest('.module-body').find('.user-found').show();

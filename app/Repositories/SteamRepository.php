@@ -99,12 +99,6 @@ class SteamRepository
                         $user_current_game_id = "";
                     }
                     
-                    if($user_location_coordinates !== "") {
-                        $user_location_coordinates = str_replace(",","/",$user_location_coordinates); //add a slash instead of a comma for openstreetmap
-                    } else {
-                        $user_location_coordinates = ""; //just incase a place doesnt have coordinates
-                    }
-
                     $json_data[] = array(
                         'json_person_name' => $user_persona_name,
                         'json_avatar_full' => $user_avatar,

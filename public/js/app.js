@@ -63,13 +63,9 @@ console.log(data.steam_data[0]);
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
                         
                         steam_avatar_div.css({
-                                                'display' : 'flex',
-                                                'flex-wrap': 'wrap',
                                                 'display' : 'inline-block'
                                             });                        
                         steam_id_results_div.css({
-                                                'display' : 'flex',
-                                                'flex-wrap': 'wrap',
                                                 'display' : 'inline-block'
                                             });
                         //display steam id results
@@ -108,8 +104,6 @@ console.log(data.steam_data[0]);
                         
                         if(data.steam_data[0]['json_current_game_name'] !== "") {
                             steam_id_game_div.css({
-                                                    'display' : 'flex',
-                                                    'flex-wrap': 'wrap',
                                                     'display' : 'inline-block'
                                                 });
                             

@@ -55,7 +55,6 @@ nav a:hover {
 .steam-overall-results, .steam-id-user-game-results {
     display: flex;
     flex-wrap: wrap;
-    align-items: stretch;
 }
 
 .steam-id-game-div {

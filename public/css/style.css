@@ -52,7 +52,12 @@ nav a:hover {
     color: grey;
 }
 
-.steam-overall-results {
-  display: flex;
-  flex-wrap: wrap;
+.steam-overall-results, .steam-id-user-game-results {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+}
+
+.steam-id-game-div {
+    padding-left:250px;
 }

@@ -25,6 +25,7 @@ var Homepage = {
             steam_user_id = $('#steam-user-id-input-box').val(),
             find_steam_id_div = $('.how-to-find-steam-id'),
             steam_id_results_div = $('.steam-id-results-div'),
+            steam_id_game_div = $('.steam-id-game-div'),
             steam_avatar_div = $('.steam-avatar-div'),
             results_steam_avatar = $('#steam-avatar'),
             steam_id_button_text = $('#find-steam-id-button-text'),
@@ -56,12 +57,21 @@ var Homepage = {
                 processData: false,
                 success:function(data) {
                     if(data.status === 200) {
+console.log(data.steam_data[0]);
                         
                         steam_id_results_div.empty(); //remove the previous steam id results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
                         
-                        steam_avatar_div.css("display", "inline-block");
-                        steam_id_results_div.css("display", "inline-block");
+                        steam_avatar_div.css({
+                                                'display' : 'flex',
+                                                'flex-wrap': 'wrap',
+                                                'display' : 'inline-block'
+                                            });                        
+                        steam_id_results_div.css({
+                                                'display' : 'flex',
+                                                'flex-wrap': 'wrap',
+                                                'display' : 'inline-block'
+                                            });
                         //display steam id results
                         results_steam_avatar.attr('src', data.steam_data[0]['json_avatar_full']);
             
@@ -94,6 +104,17 @@ var Homepage = {
                         //display unknown text
                         else {
                             steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-location-unknown'> Location Unknown</span></p>");
+                        }
+                        
+                        if(data.steam_data[0]['json_current_game_name'] !== "") {
+                            steam_id_game_div.css({
+                                                    'display' : 'flex',
+                                                    'flex-wrap': 'wrap',
+                                                    'display' : 'inline-block'
+                                                });
+                            
+                            steam_id_game_div.append("<h3 id='steam-id-game-name'>Playing: "+data.steam_data[0]['json_current_game_name']+"</h3>");
+                            steam_id_game_div.append("<p>"+data.steam_data[0]['json_current_game_id']+"</p>");
                         }
                         
                         find_steam_info_button.closest('.module-body').find('.user-found').show();

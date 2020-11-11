@@ -111,7 +111,7 @@ class SteamRepository
                         'json_state_name' => $user_state_name,
                         'json_city_name' => $user_city_name,
                         'json_location_coordinates' => $user_location_coordinates,
-                        'json_current_game' => $user_current_game,
+                        'json_current_game_name' => $user_current_game,
                         'json_current_game_id' => $user_current_game_id
                     );
                 }

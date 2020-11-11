@@ -66,14 +66,15 @@
             <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> Please enter a valid Steam ID. Steam IDs are digits only.</div>
             <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found!</div>
         </div>
-    
-        <div class="steam-overall-results">
-            <div class="steam-avatar-div" style="display:none;">
-                <img id="steam-avatar" alt="Steam Avatar">
-            </div>
-        
-            <div class="steam-id-results-div" style="display:none;padding-left:10px;"></div>
+    <div class="steam-overall-results">
+        <div class="steam-avatar-div" style="display:none;">
+            <img id="steam-avatar" alt="Steam Avatar">
         </div>
-        <div id="end-row"><br><br><br></div>
+        <div class="steam-id-user-game-results">
+            <div class="steam-id-results-div" style="display:none;padding-left:10px;"></div>
+            <div class="steam-id-game-div" style="display:none;"></div>
+        </div>
+    </div>
+    <div id="end-row"><br><br><br></div>
     </body>
 @endsection

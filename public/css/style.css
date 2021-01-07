@@ -4,7 +4,7 @@ body {
 }
 
 /* Code to format the navigation menu */
-.header-nav li {
+.header-nav {
     padding-left:10px;
 }
 
@@ -15,7 +15,7 @@ nav.header-nav {
 nav a {
     display: inline-block;
     color: #fefefe;
-    padding: 16px;
+    padding: 20px;
     text-decoration: none;
 }
 

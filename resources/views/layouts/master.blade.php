@@ -14,7 +14,7 @@
 <body>
 @section('header')
     <nav class="header-nav">
-        <li id="home"><a href="{{url('steam/home')}}">Steam Account Lookup</a></li>
+        <a href="{{url('steam/home')}}">Steam Account Lookup</a>
     </nav>
     @show
     <br>

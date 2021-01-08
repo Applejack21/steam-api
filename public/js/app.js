@@ -31,7 +31,7 @@ var Homepage = {
             results_steam_avatar = $('#steam-avatar'),
             results_game_header = $('#steam-id-game-image'),
             steam_id_button_text = $('#find-steam-id-button-text'),
-            steam_avatar_link = $('#steam-avatar-link')
+            steam_avatar_link = $('#steam-avatar-link'),
             valid = true;
                 
         steam_id_button_text.text('Searching... ');

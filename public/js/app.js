@@ -31,6 +31,7 @@ var Homepage = {
             results_steam_avatar = $('#steam-avatar'),
             results_game_header = $('#steam-id-game-image'),
             steam_id_button_text = $('#find-steam-id-button-text'),
+            steam_avatar_link = $('#steam-avatar-link')
             valid = true;
                 
         steam_id_button_text.text('Searching... ');
@@ -74,7 +75,8 @@ console.log(data.steam_data);
                                             });
                         //display steam id results
                         results_steam_avatar.attr('src', data.steam_data['json_avatar_full']);
-            
+                        steam_avatar_link.attr('href', "https://steamcommunity.com/profiles/"+steam_user_id.trim());
+                        
                         if(data.steam_data['json_real_name'] !== "") {
                             steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data['json_person_name']+"<span id='steam-real-name' class='text--colour-grey'> ("+data.steam_data['json_real_name']+")</span></h3>");
                         } else {

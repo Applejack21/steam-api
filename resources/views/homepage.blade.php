@@ -69,7 +69,7 @@
         </div>
     <div class="steam-overall-results">
         <div class="steam-avatar-div" style="display:none;">
-            <img id="steam-avatar" alt="Steam Avatar">
+            <a id="steam-avatar-link" target=_blank><img id="steam-avatar" alt="Steam Avatar"></a>
         </div>
         <div class="steam-id-user-game-results">
             <div class="steam-id-results-div" style="display:none;padding-left:10px;"></div>

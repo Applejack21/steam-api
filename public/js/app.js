@@ -59,7 +59,6 @@ var Homepage = {
                 processData: false,
                 success:function(data) {
                     if(data.status === 200) {
-console.log(data.steam_data[0]);
                         
                         steam_id_results_div.empty(); //remove the previous steam id results
                         steam_id_game_div.empty(); //remove the previous steam game results

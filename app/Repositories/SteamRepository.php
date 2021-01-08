@@ -94,6 +94,8 @@ class SteamRepository
                     if(isset($player['gameextrainfo'])) {
                         $user_current_game = $player['gameextrainfo']; //name of the current game they're playing
                         $user_current_game_id = $player['gameid']; //the id of the game they're playing
+                        $user_current_game_image = "https://steamcdn-a.akamaihd.net/steam/apps/".$user_current_game_id."/header.jpg";
+Log::info($user_current_game_image);
                     } else {
                         $user_current_game = "";
                         $user_current_game_id = "";
@@ -112,7 +114,8 @@ class SteamRepository
                         'json_city_name' => $user_city_name,
                         'json_location_coordinates' => $user_location_coordinates,
                         'json_current_game_name' => $user_current_game,
-                        'json_current_game_id' => $user_current_game_id
+                        'json_current_game_id' => $user_current_game_id,
+                        'json_current_game_image' => $user_current_game_image
                     );
                 }
                 return $json_data; 

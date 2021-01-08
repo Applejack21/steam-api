@@ -24,10 +24,12 @@ var Homepage = {
             find_steam_info_button = $('#find-steam-id'),
             steam_user_id = $('#steam-user-id-input-box').val(),
             find_steam_id_div = $('.how-to-find-steam-id'),
+            steam_results_overall_div = $('.steam-id-user-game-results'),
             steam_id_results_div = $('.steam-id-results-div'),
             steam_id_game_div = $('.steam-id-game-div'),
             steam_avatar_div = $('.steam-avatar-div'),
             results_steam_avatar = $('#steam-avatar'),
+            results_game_header = $('#steam-id-game-image'),
             steam_id_button_text = $('#find-steam-id-button-text'),
             valid = true;
                 
@@ -60,7 +62,10 @@ var Homepage = {
 console.log(data.steam_data[0]);
                         
                         steam_id_results_div.empty(); //remove the previous steam id results
+                        steam_id_game_div.empty(); //remove the previous steam game results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
+                        results_game_header.removeAttr('src');
+                        
                         
                         steam_avatar_div.css({
                                                 'display' : 'inline-block'
@@ -107,14 +112,17 @@ console.log(data.steam_data[0]);
                                                     'display' : 'inline-block'
                                                 });
                             
-                            steam_id_game_div.append("<h3 id='steam-id-game-name'>Playing: "+data.steam_data[0]['json_current_game_name']+"</h3>");
-                            steam_id_game_div.append("<p>"+data.steam_data[0]['json_current_game_id']+"</p>");
+                            $('#steam-user-status').append(" - In Game");
+                            steam_id_game_div.append("<a target=_blank href='https://store.steampowered.com/app/"+data.steam_data[0]['json_current_game_id']+"'><img style='width:70%;' id='steam-id-game-image' src='"+data.steam_data[0]['json_current_game_image']+"'</a>");
+                            steam_id_game_div.append("<p style='color: #808080'>Click image to view store page (open in new tab)</p>");
                         }
                         
                         find_steam_info_button.closest('.module-body').find('.user-found').show();
                     } else {
                         find_steam_info_button.closest('.module-body').find('.user-not-found').show();
                     }
+                    
+                    
                     
                     steam_id_button_text.text('Find Steam Account');
                     find_steam_info_button.find('.fa-spin').css("visibility", "hidden");

@@ -65,7 +65,7 @@
             <div class="alert alert-danger empty-id" style="display:none;"><strong>Warning!</strong> Please enter a Steam ID.</div>
             <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> Please enter a valid Steam ID. Steam IDs are digits only.</div>
             <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found!</div>
-            <div class="alert alert-info user-private" style="display:none;"><strong>Note:</strong> This user's profile is private resulting in limited information. If this is your profile, you can change your steam profile's "Privacy Settings" and try again later.</div>
+            <div class="alert alert-info user-private" style="display:none;"><strong>Success!</strong> User found!<strong> However,</strong> This user's profile is private resulting in limited information. If this is your profile, you can change your steam profile's "Privacy Settings". Privacy settings take time to update so try again later.</div>
         </div>
     <div class="steam-overall-results">
         <div class="steam-avatar-div" style="display:none;">

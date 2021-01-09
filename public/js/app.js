@@ -117,12 +117,13 @@ console.log(data.steam_data);
                             
                             $('#steam-user-status').append(" - In Game");
                             steam_id_game_div.append("<a target=_blank href='https://store.steampowered.com/app/"+data.steam_data['json_current_game_id']+"'><img style='width:80%;' id='steam-id-game-image' src='"+data.steam_data['json_current_game_image']+"'</a>");
-                            steam_id_game_div.append("<p style='color: #808080'>Click image to view store page (open in new tab)</p>");
                         }
                         
-                        find_steam_info_button.closest('.module-body').find('.user-found').show();
                         if(data.steam_data['json_visibility_state'] === 1) {
                             find_steam_info_button.closest('.module-body').find('.user-private').show();
+                        } else {
+                            find_steam_info_button.closest('.module-body').find('.user-found').show();
+                            find_steam_info_button.closest('.module-body').find('.user-found').fadeOut(5000);
                         }
                     } else {
                         find_steam_info_button.closest('.module-body').find('.user-not-found').show();

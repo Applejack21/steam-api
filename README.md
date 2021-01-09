@@ -6,8 +6,8 @@ This is being built using Laravel. Currently using Laravel 8.x.
 
 Basic information to show
 -
-* Display basic information (~~name~~, ~~avatar~~, ~~date created~~, ~~location~~, currently playing, etc..).
-* Add link to Steam Store page of currently playing game - possibly show current price in GBP?
+* Display basic information (~~name~~, ~~avatar~~, ~~date created~~, ~~location~~, ~~currently playing~~, etc..).
+* ~~Add link to Steam Store page of currently playing game~~ - possibly show current price in GBP?
 * Add button to join them ingame.
 
 Later information to show

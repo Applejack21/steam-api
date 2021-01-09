@@ -64,8 +64,9 @@
             <div class="alert alert-danger general-error" style="display:none;"><strong>Warning!</strong> Something went wrong. Please make sure you've entered a valid Steam ID. And if so, check <a href="https://steamstat.us/" target="_blank">steamstat.us</a> to see if the "Steam Web API" is up and running.</div>
             <div class="alert alert-danger empty-id" style="display:none;"><strong>Warning!</strong> Please enter a Steam ID.</div>
             <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> Please enter a valid Steam ID. Steam IDs are digits only.</div>
-            <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found!</div>
-            <div class="alert alert-info user-private" style="display:none;"><strong>Success!</strong> User found!<strong> However,</strong> This user's profile is private resulting in limited information. If this is your profile, you can change your steam profile's "Privacy Settings". Privacy settings take time to update so try again later.</div>
+            <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found! -<strong> Click to dismiss.</strong></div>
+            <div class="alert alert-info user-private" style="display:none;"><strong>Success!</strong> User found!<strong> However,</strong> This user's profile is private resulting in limited information. If this is your profile, you can change your steam profile's "Privacy Settings". Privacy settings take time to update so try again later. -<strong> Click to dismiss.</strong></div>
+            <div class="alert alert-secondary user-images" style="display:none;">Click the images to visit their respective pages. -<strong> Click to dismiss.</strong></div>
         </div>
     <div class="steam-overall-results">
         <div class="steam-avatar-div" style="display:none;">

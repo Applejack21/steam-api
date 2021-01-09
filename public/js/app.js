@@ -123,13 +123,24 @@ console.log(data.steam_data);
                             find_steam_info_button.closest('.module-body').find('.user-private').show();
                         } else {
                             find_steam_info_button.closest('.module-body').find('.user-found').show();
-                            find_steam_info_button.closest('.module-body').find('.user-found').fadeOut(5000);
                         }
+                        
+                        find_steam_info_button.closest('.module-body').find('.user-images').show();
                     } else {
                         find_steam_info_button.closest('.module-body').find('.user-not-found').show();
                     }
                     
+                    $(".user-found").click(function() {
+                        $(".user-found").fadeOut( "slow" );
+                    });
                     
+                    $(".user-private").click(function() {
+                        $(".user-private").fadeOut( "slow" );
+                    });
+                    
+                    $(".user-images").click(function() {
+                        $(".user-images").fadeOut( "slow" );
+                    });
                     
                     steam_id_button_text.text('Find Steam Account');
                     find_steam_info_button.find('.fa-spin').css("visibility", "hidden");

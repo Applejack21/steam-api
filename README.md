@@ -6,9 +6,15 @@ This is being built using Laravel. Currently using Laravel 8.x.
 
 Basic information to show
 -
-* Display basic information (~~name~~, ~~avatar~~, ~~date created~~, ~~location~~, ~~currently playing~~, etc..).
-* ~~Add link to Steam Store page of currently playing game~~ - possibly show current price in GBP?
-* Add button to join them ingame.
+* Display basic information:
+    - [x] Account name .
+    - [x] Account avatar.
+    - [x] Account creation date.
+    - [x] Current location.
+    - [x] Currently game they're playing.
+- [x] Link to Steam Store page of currently playing game.
+- [ ] Price in GBP.
+- [x] "Join Game" button.
 
 Later information to show
 -

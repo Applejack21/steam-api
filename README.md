@@ -7,7 +7,7 @@ This is being built using Laravel. Currently using Laravel 8.x.
 Basic information to show
 -
 * Display basic information:
-    - [x] Account name .
+    - [x] Account name.
     - [x] Account avatar.
     - [x] Account creation date.
     - [x] Current location.
@@ -18,7 +18,11 @@ Basic information to show
 
 Later information to show
 -
-* Display user's game information (recently played games, total hours played, achievements in them, etc...).
+* Display user's game information (last 2 weeks):
+    - [ ] Recently played games 
+    - [ ] Total hours played per game
+    - [ ] Achievements in these games
+    
 * Display user's stats of games:
     + TF2 Stats - Total time played per class, buildings destroyed per class etc...
     + CSGO Stats - Total enemies killed, Total deaths, Wins, Stats per weapon (?).

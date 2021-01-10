@@ -6,7 +6,7 @@ This is being built using Laravel. Currently using Laravel 8.x.
 
 Basic information to show
 -
-* Display basic information:
+- [x] Display basic information:
     - [x] Account name.
     - [x] Account avatar.
     - [x] Account creation date.
@@ -18,7 +18,7 @@ Basic information to show
 
 Later information to show
 -
-* Display user's game information (last 2 weeks):
+- [ ] Display user's game information (last 2 weeks):
     - [ ] Recently played games 
     - [ ] Total hours played per game
     - [ ] Achievements in these games

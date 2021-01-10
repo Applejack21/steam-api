@@ -64,7 +64,7 @@ console.log(data.steam_data);
                         steam_id_results_div.empty(); //remove the previous steam id results
                         steam_id_game_div.empty(); //remove the previous steam game results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
-                        results_game_header.removeAttr('src');
+                        results_game_header.removeAttr('src'); // ""
                         
                         
                         steam_avatar_div.css({
@@ -116,7 +116,12 @@ console.log(data.steam_data);
                                                 });
                             
                             $('#steam-user-status').append(" - In Game");
-                            steam_id_game_div.append("<a target=_blank href='https://store.steampowered.com/app/"+data.steam_data['json_current_game_id']+"'><img style='width:80%;' id='steam-id-game-image' src='"+data.steam_data['json_current_game_image']+"'</a>");
+                            steam_id_game_div.append("<a target=_blank href='https://store.steampowered.com/app/"+data.steam_data['json_current_game_id']+"'><img alt='Game Store Banner' style='width:80%;' id='steam-id-game-image' src='"+data.steam_data['json_current_game_image']+"'</a>");
+                            steam_id_game_div.append("<p style='color: #808080'>Currently playing: "+data.steam_data['json_current_game_name']+"</p>");
+                            
+                            if(data.steam_data['json_current_game_lobby_id'] !== "") {
+                                steam_id_game_div.append("<span><a href='steam://joinlobby/"+data.steam_data['json_current_game_id']+"/"+data.steam_data['json_current_game_lobby_id']+"/"+data.steam_data['json_steam_id']+"' class='btn btn-success' role='button'>Join Game</a></span>");
+                            }
                         }
                         
                         if(data.steam_data['json_visibility_state'] === 1) {

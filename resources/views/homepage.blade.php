@@ -25,7 +25,7 @@
                         <div class="how-to-find-noncustom-url">
                             <h5><u>Non-custom profile URL</u></h5>
                             <p>If you don't have a custom profile URL, then your Steam ID will be the digits at the end of your profile URL.</p>
-                            <p>e.g. <i>https://steamcommunity.com/id/123456789...</i></p>
+                            <p>e.g. <i>https://steamcommunity.com/profiles/123456789...</i></p>
                         </div>
                         <div class="how-to-find-custom-url">
                             <h5><u>Custom profile URL</u></h5>
@@ -33,7 +33,7 @@
                             <ol>
                                 <li>Copy your custom profile URL, e.g. <i>https://steamcommunity.com/id/customsteamurl</i></li>
                                 <li>Go to <a class="hyperlink" target="_blank" href="https://steamid.io/">steamid.io</a> and enter your URL and click "lookup"</li>
-                                <li>Copy your "steamID64" and paste it into the search box.</li>
+                                <li>Copy your "steamID64" and paste it into the search box at the top of this page.</li>
                             </ol>
                         </div>
                     </div>
@@ -65,7 +65,7 @@
             <div class="alert alert-danger empty-id" style="display:none;"><strong>Warning!</strong> Please enter a Steam ID.</div>
             <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> Please enter a valid Steam ID. Steam IDs are digits only.</div>
             <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found! -<strong> Click to dismiss.</strong></div>
-            <div class="alert alert-info user-private" style="display:none;"><strong>Success!</strong> User found!<strong> However,</strong> This user's profile is private resulting in limited information. If this is your profile, you can change your steam profile's "Privacy Settings". Privacy settings take time to update so try again later. -<strong> Click to dismiss.</strong></div>
+            <div class="alert alert-info user-private" style="display:none;"><strong>Success!</strong> User found!<strong> However,</strong> This user's profile is private resulting in limited information. If this is your profile, you can change your Steam profile's "Privacy Settings". Privacy settings take time to update so try again later. -<strong> Click to dismiss.</strong></div>
             <div class="alert alert-secondary user-images" style="display:none;">Click the images to visit their respective pages. -<strong> Click to dismiss.</strong></div>
         </div>
     <div class="steam-overall-results">

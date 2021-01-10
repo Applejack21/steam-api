@@ -98,14 +98,21 @@ class SteamRepository
                         if(isset($player['gameextrainfo'])) {
                             $user_current_game = $player['gameextrainfo']; //name of the current game they're playing
                             $user_current_game_id = $player['gameid']; //the id of the game they're playing
-                            $user_current_game_image = "https://steamcdn-a.akamaihd.net/steam/apps/".$user_current_game_id."/header.jpg";
+                            $user_current_game_image = "https://steamcdn-a.akamaihd.net/steam/apps/".$user_current_game_id."/header.jpg"; //store image of current game
                         } else {
                             $user_current_game = "";
                             $user_current_game_id = "";
                             $user_current_game_image = "";
                         }
                         
+                        if(isset($player['lobbysteamid'])) {
+                            $user_current_game_lobby_id = $player['lobbysteamid']; //the id of the lobby they're in
+                        } else {
+                            $user_current_game_lobby_id = "";
+                        }
+                        
                         $json_data = array(
+                            'json_steam_id' => $steam_id,
                             'json_person_name' => $user_persona_name,
                             'json_avatar_full' => $user_avatar,
                             'json_persona_state' => $user_persona_state,
@@ -120,10 +127,12 @@ class SteamRepository
                             'json_location_coordinates' => $user_location_coordinates,
                             'json_current_game_name' => $user_current_game,
                             'json_current_game_id' => $user_current_game_id,
-                            'json_current_game_image' => $user_current_game_image
+                            'json_current_game_image' => $user_current_game_image,
+                            'json_current_game_lobby_id' => $user_current_game_lobby_id
                         );
                     } else {
                         $json_data = array(
+                            'json_steam_id' => $steam_id,
                             'json_person_name' => $user_persona_name,
                             'json_avatar_full' => $user_avatar,
                             'json_persona_state' => $user_persona_state,
@@ -138,7 +147,8 @@ class SteamRepository
                             'json_location_coordinates' => "",
                             'json_current_game_name' => "",
                             'json_current_game_id' => "",
-                            'json_current_game_image' => ""
+                            'json_current_game_image' => "",
+                            'json_current_game_lobby_id' => ""
                         );
                     }
                 }

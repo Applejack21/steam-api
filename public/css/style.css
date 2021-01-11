@@ -33,7 +33,8 @@ nav a:hover {
 }
 
 .input--border-curved {
-    border-radius: 6px;
+    border: 1px solid #6c757d;
+    border-radius: 10px;
 }
 
 .input--font-large {
@@ -56,12 +57,23 @@ nav a:hover {
     color: grey;
 }
 
+.find-steam-id-button {
+    text-align: center;
+}
+
 .steam-overall-results, .steam-id-user-game-results {
     display: flex;
 }
 
+#steam-user-id-input-box {
+    width:100%; 
+    text-align:center;
+    font-size: 32px;
+}
+
 .steam-id-game-div {
     padding-left:100px;
+    text-align: center;
 }
 
 img {

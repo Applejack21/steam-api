@@ -35,6 +35,9 @@
                                 <li>Go to <a class="hyperlink" target="_blank" href="https://steamid.io/">steamid.io</a> and enter your URL and click "lookup"</li>
                                 <li>Copy your "steamID64" and paste it into the search box at the top of this page.</li>
                             </ol>
+                            <div class="modal-footer">
+                                <p>I'll eventually remove the need of getting your "steamID64" manually and convert the URLs to "steamID64" automatically.</p>
+                            </div>
                         </div>
                     </div>
                     <div class="modal-footer">
@@ -49,10 +52,10 @@
                 <div class="form-body">
                     <div class="control-group">
                         <div class="controls row-fluid">
-                            <input type="text" id="steam-user-id-input-box" class="input--border-curved input--font-large" maxlength="17" placeholder="Enter Steam ID here...">  
+                            <input type="text" id="steam-user-id-input-box" class="input--border-curved input--font-large" maxlength="17" placeholder="Enter Steam ID here...">
                         </div>
                     </div><br>
-                    <div class="control-group">
+                    <div class="control-group find-steam-id-button">
                         <button type="submit" class="btn btn-primary" name="submitBtn" id="find-steam-id">   
                             <i class="fas fa-search"></i>
                             <span id="find-steam-id-button-text">Find Steam Account</span>

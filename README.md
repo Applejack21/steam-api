@@ -14,7 +14,7 @@ Basic information to show
     - [x] Current game they're playing.
 - [x] Link to Steam Store page of currently playing game.
 - [ ] Price in GBP.
-- [x] "Join Game" button.
+- [x] "Join Game" button (will join a lobby/game server if available).
 
 Later information to show
 -

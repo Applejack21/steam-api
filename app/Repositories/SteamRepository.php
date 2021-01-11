@@ -114,7 +114,13 @@ class SteamRepository
                             $user_current_game_lobby_id = $player['lobbysteamid']; //the id of the lobby they're in
                             
                             $json_data["json_current_game_lobby_id"] = $user_current_game_lobby_id;
-                        } 
+                        }
+                        
+                        if(isset($player['gameserverip'])) {
+                            $user_current_game_server_ip = $player['gameserverip']; //the ip of the server they're in
+                            
+                            $json_data["json_current_game_server_ip"] = $user_current_game_server_ip;
+                        }
                     }
                 }
                 return $json_data; 

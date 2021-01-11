@@ -77,57 +77,62 @@ console.log(data.steam_data);
                         results_steam_avatar.attr('src', data.steam_data['json_avatar_full']);
                         steam_avatar_link.attr('href', "https://steamcommunity.com/profiles/"+steam_user_id.trim());
                         
-                        if(data.steam_data['json_real_name'] !== "") {
+                        if("json_real_name" in data.steam_data) {
                             steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data['json_person_name']+"<span id='steam-real-name' class='text--colour-grey'> ("+data.steam_data['json_real_name']+")</span></h3>");
                         } else {
                              steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data['json_person_name']+"</h3>");
                         }
                        
-                        if(data.steam_data['json_persona_state'] === "Online") {
-                            steam_id_results_div.append("<p><i class='fas fa-circle fa-circle-online'></i><span id='steam-user-status'> "+data.steam_data['json_persona_state']+"</span></p>");
-                        } else {
-                            steam_id_results_div.append("<p><i class='fas fa-circle fa-circle-offline'></i><span id='steam-user-status'> "+data.steam_data['json_persona_state']+"</span></p>");
+                        
+                        if("json_persona_state" in data.steam_data) {
+                            if(data.steam_data['json_persona_state'] === "Online") {
+                                steam_id_results_div.append("<p><i class='fas fa-circle fa-circle-online'></i><span id='steam-user-status'> "+data.steam_data['json_persona_state']+"</span></p>");
+                            } else {
+                                steam_id_results_div.append("<p><i class='fas fa-circle fa-circle-offline'></i><span id='steam-user-status'> "+data.steam_data['json_persona_state']+"</span></p>");
+                            }
                         }
                         
-                        if(!!data.steam_data['json_time_created']) {
+                        if("json_time_created" in data.steam_data) {
                             steam_id_results_div.append("<p><i class='fas fa-calendar-alt'></i><span id='steam-data-created' data-toggle='tooltip' data-placement='right' title='"+data.steam_data['json_time_created_full']+" (UTC)'> "+data.steam_data['json_time_created']+"</span></p>");
                         }
 
-                        //display city, state and country names
-                        if(data.steam_data['json_city_name'] && data.steam_data['json_location_coordinates'] !== "") {
+                        //display city, state and country names "json_location_coordinates" in data.steam_data
+                        if("json_city_name" in data.steam_data && "json_location_coordinates" in data.steam_data) {
                             steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='https://www.google.co.uk/maps/place/@"+data.steam_data['json_location_coordinates']+",12z'><span id='steam-user-city'> "+data.steam_data['json_city_name']+", </span><span id='steam-user-state'>"+data.steam_data['json_state_name']+", </span><span id='steam-user-country'>"+data.steam_data['json_country_name']+"</span></a><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data['json_country_code']+")</span></p>");
                             
                         //display state, and country name
-                        } else if(data.steam_data['json_state_name'] && data.steam_data['json_location_coordinates'] !== "") {
+                        } else if("json_state_name" in data.steam_data && "json_location_coordinates" in data.steam_data) {
                             steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='https://www.google.co.uk/maps/place/@"+data.steam_data['json_location_coordinates']+",12z'><span id='steam-user-state'> "+data.steam_data['json_state_name']+", </span><span id='steam-user-country'>"+data.steam_data['json_country_name']+"</a></span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data['json_country_code']+")</span></p>");
                             
                         //display country name
-                        } else if(data.steam_data['json_country_name'] !== "") {
-                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-country'> "+data.steam_data['json_country_name']+"</span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data['json_country_code']+")</span></p>");
+                        } else if("json_country_name" in data.steam_data) {
+                            steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><a class='hyperlink' target='_blank' href='https://www.google.co.uk/maps/place/"+data.steam_data['json_country_name']+"'><span id='steam-user-country'> "+data.steam_data['json_country_name']+"</a></span><span id='steam-user-country-code' class='text--colour-grey'> ("+data.steam_data['json_country_code']+")</span></p>");
                         } 
                         //display unknown text
                         else {
                             steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-location-unknown'> Location Unknown</span></p>");
                         }
                         
-                        if(data.steam_data['json_current_game_name'] !== "") {
+                        if("json_current_game_name" in data.steam_data) {
                             steam_id_game_div.css({
                                                     'display' : 'inline-block'
                                                 });
                             
                             $('#steam-user-status').append(" - In Game");
-                            steam_id_game_div.append("<a target=_blank href='https://store.steampowered.com/app/"+data.steam_data['json_current_game_id']+"'><img alt='Game Store Banner' style='width:80%;' id='steam-id-game-image' src='"+data.steam_data['json_current_game_image']+"'</a>");
+                            steam_id_game_div.append("<a target=_blank href='https://store.steampowered.com/app/"+data.steam_data['json_current_game_id']+"'><img alt='Game Store Banner' id='steam-id-game-image' src='"+data.steam_data['json_current_game_image']+"'</a>");
                             steam_id_game_div.append("<p style='color: #808080'>Currently playing: "+data.steam_data['json_current_game_name']+"</p>");
                             
-                            if(data.steam_data['json_current_game_lobby_id'] !== "") {
+                            if("json_current_game_lobby_id" in data.steam_data) {
                                 steam_id_game_div.append("<span><a href='steam://joinlobby/"+data.steam_data['json_current_game_id']+"/"+data.steam_data['json_current_game_lobby_id']+"/"+data.steam_data['json_steam_id']+"' class='btn btn-success' role='button'>Join Game</a></span>");
                             }
                         }
                         
-                        if(data.steam_data['json_visibility_state'] === 1) {
-                            find_steam_info_button.closest('.module-body').find('.user-private').show();
-                        } else {
-                            find_steam_info_button.closest('.module-body').find('.user-found').show();
+                        if("json_visibility_state" in data.steam_data) {
+                            if(data.steam_data['json_persona_state'] === 1) {
+                                find_steam_info_button.closest('.module-body').find('.user-private').show();
+                            } else {
+                                find_steam_info_button.closest('.module-body').find('.user-found').show();
+                            }
                         }
                         
                         find_steam_info_button.closest('.module-body').find('.user-images').show();

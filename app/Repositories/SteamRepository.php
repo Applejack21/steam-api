@@ -11,6 +11,7 @@ class SteamRepository
     {
         $json_data = array();
         $steam_id = $request->steam_id;
+        $json_data["json_steam_id"] = $steam_id; //add steam id to array
         $api_key = env('STEAM_API_KEY');
         $api_url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$steam_id;
         $steam_countries_json = 'public/json/steam_countries.min.json';

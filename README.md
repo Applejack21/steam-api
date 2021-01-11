@@ -11,7 +11,7 @@ Basic information to show
     - [x] Account avatar.
     - [x] Account creation date.
     - [x] Current location.
-    - [x] Currently game they're playing.
+    - [x] Current game they're playing.
 - [x] Link to Steam Store page of currently playing game.
 - [ ] Price in GBP.
 - [x] "Join Game" button.

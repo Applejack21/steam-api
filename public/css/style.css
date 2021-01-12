@@ -76,6 +76,10 @@ nav a:hover {
     text-align: center;
 }
 
+#steam-data-created {
+    padding-right: 10px;
+}
+
 img {
     border-style: ridge;
     border-color: #808080;

@@ -120,7 +120,7 @@ console.log(data.steam_data);
                             
                             $('#steam-user-status').append(" - In Game");
                             steam_id_game_div.append("<a target=_blank href='https://store.steampowered.com/app/"+data.steam_data['json_current_game_id']+"'><img alt='Game Store Banner' id='steam-id-game-image' src='"+data.steam_data['json_current_game_image']+"'</a>");
-                            steam_id_game_div.append("<p style='color: #808080'>Currently Playing: "+data.steam_data['json_current_game_name']+"</p>");
+                            steam_id_game_div.append("<p class='text--colour-grey'>Currently Playing: "+data.steam_data['json_current_game_name']+"</p>");
                             
                             if("json_current_game_lobby_id" in data.steam_data) {
                                 steam_id_game_div.append("<span><a href='steam://joinlobby/"+data.steam_data['json_current_game_id']+"/"+data.steam_data['json_current_game_lobby_id']+"/"+data.steam_data['json_steam_id']+"' class='btn btn-success' role='button'>Join Game Lobby</a></span>");

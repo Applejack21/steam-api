@@ -63,8 +63,8 @@ class SteamRepository
                     
                         if(isset($player['timecreated'])) {
                             $unix_time_created = $player['timecreated']; //seconds since unix time they made their steam account
-                            $user_time_created = gmdate("dS F Y", $unix_time_created); //converted to date.
-                            $user_time_created_full = gmdate("dS F Y - H:i:s", $unix_time_created); //full created date and time
+                            $user_time_created = gmdate("jS F Y", $unix_time_created); //converted to date.
+                            $user_time_created_full = gmdate("jS F Y - H:i:s", $unix_time_created); //full created date and time
                             
                             $json_data["json_time_created"] = $user_time_created;
                             $json_data["json_time_created_full"] = $user_time_created_full;

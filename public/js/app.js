@@ -39,10 +39,11 @@ var Homepage = {
         find_steam_info_button.prop('disabled', true);
         find_steam_info_button.find('.fa-spin').css("visibility", "visible");
         find_steam_info_button.closest('.module-body').find('.alert').hide();
-                
-        if((steam_user_id === "")) {
+                        
+        if(steam_user_id == "") {
             valid = false;
         }
+        
         
         if(!valid) {
             find_steam_info_button.closest('.module-body').find('.empty-id').show();
@@ -165,7 +166,7 @@ console.log(data.steam_data);
                     $(".user-images").click(function() {
                         $(".user-images").fadeOut( "slow" );
                     });
-                    
+                                        
                     steam_id_button_text.text('Find Steam Account');
                     find_steam_info_button.find('.fa-spin').css("visibility", "hidden");
                     find_steam_info_button.prop('disabled', false);

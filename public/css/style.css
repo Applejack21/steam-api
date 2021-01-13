@@ -71,6 +71,10 @@ nav a:hover {
     font-size: 32px;
 }
 
+.steam-id-results-div {
+    padding-left: 20px;
+}
+
 .steam-id-game-div {
     margin-left:100px;
     text-align: center;
@@ -80,9 +84,16 @@ nav a:hover {
     padding-right: 10px;
 }
 
-img {
+#steam-avatar, #steam-id-game-image {
+    border: 5px;
     border-style: ridge;
     border-color: #808080;
+}
+
+#steam-avatar-frame { 
+    position: absolute;
+    margin-left: -20px;
+    margin-top: -20px;
 }
 
 * {

@@ -70,13 +70,16 @@
             <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User found! -<strong> Click to dismiss.</strong></div>
             <div class="alert alert-info user-private" style="display:none;"><strong>Success!</strong> User found!<strong> However,</strong> This user's profile is private resulting in limited information. If this is your profile, you can change your Steam profile's "Privacy Settings". Privacy settings take time to update so try again later. -<strong> Click to dismiss.</strong></div>
             <div class="alert alert-secondary user-images" style="display:none;">Click the images to visit their respective pages. -<strong> Click to dismiss.</strong></div>
-        </div><hr>
+        </div><hr><br>
     <div class="steam-overall-results">
         <div class="steam-avatar-div" style="display:none;">
-            <a id="steam-avatar-link" target=_blank><img id="steam-avatar" alt="Steam Avatar"></a>
+            <a id="steam-avatar-link" target=_blank>
+                <img id="steam-avatar-frame" alt="">
+                <img id="steam-avatar" alt="Steam Avatar">
+            </a>
         </div>
         <div class="steam-id-user-game-results">
-            <div class="steam-id-results-div" style="display:none;padding-left:10px;"></div>
+            <div class="steam-id-results-div" style="display:none;"></div>
             <div class="steam-id-game-div" style="display:none;"></div>
         </div>
     </div>

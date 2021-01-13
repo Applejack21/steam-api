@@ -29,6 +29,7 @@ var Homepage = {
             steam_id_game_div = $('.steam-id-game-div'),
             steam_avatar_div = $('.steam-avatar-div'),
             results_steam_avatar = $('#steam-avatar'),
+            results_steam_avatar_frame = $('#steam-avatar-frame'),
             results_game_header = $('#steam-id-game-image'),
             steam_id_button_text = $('#find-steam-id-button-text'),
             steam_avatar_link = $('#steam-avatar-link'),
@@ -64,6 +65,7 @@ console.log(data.steam_data);
                         steam_id_results_div.empty(); //remove the previous steam id results
                         steam_id_game_div.empty(); //remove the previous steam game results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
+                        results_steam_avatar_frame.removeAttr('src');
                         results_game_header.removeAttr('src'); // ""
                         
                         
@@ -73,7 +75,15 @@ console.log(data.steam_data);
                         steam_id_results_div.css({
                                                 'display' : 'inline-block'
                                             });
+                        
                         //display steam id results
+                        if("json_avatar_frame" in data.steam_data) {
+                            results_steam_avatar.css("border-style", "none");
+                            results_steam_avatar_frame.attr('src', data.steam_data['json_avatar_frame']);
+                        } else {
+                            results_steam_avatar.css("border-style", "ridge");
+                        }
+                        
                         results_steam_avatar.attr('src', data.steam_data['json_avatar_full']);
                         steam_avatar_link.attr('href', "https://steamcommunity.com/profiles/"+steam_user_id.trim());
                         

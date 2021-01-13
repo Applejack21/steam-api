@@ -14,6 +14,7 @@ class SteamRepository
         $json_data["json_steam_id"] = $steam_id; //add steam id to array
         $api_key = env('STEAM_API_KEY');
         $api_url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$steam_id;
+        $frame_api_url = "https://api.steampowered.com/IPlayerService/GetAvatarFrame/v1/?key=".$api_key."&steamid=".$steam_id;
         $steam_countries_json = 'public/json/steam_countries.min.json';
         
         $json_decode = json_decode(file_get_contents($api_url),true);
@@ -28,6 +29,17 @@ class SteamRepository
                     //get all the information about the user that we need - https://developer.valvesoftware.com/wiki/Steam_Web_API#GetPlayerSummaries_.28v0002.29
                     
                     //publically available data
+                    
+                    $steam_frame_json = json_decode(file_get_contents($frame_api_url),true);
+
+                    if(!empty($steam_frame_json['response'])) {
+                        $avatar_response = $steam_frame_json['response'];
+                        if(!empty($avatar_response['avatar_frame'])) {
+                            $avatar_frame = $avatar_response['avatar_frame']['image_small'];
+                            $avatar_frame_url = "https://cdn.cloudflare.steamstatic.com/steamcommunity/public/images/".$avatar_frame;
+                            $json_data["json_avatar_frame"] = $avatar_frame_url;
+                        }
+                    }
                     
                     if(isset($player['personaname'])) {
                         $json_data["json_person_name"] = $player['personaname']; //their steam profile name

@@ -5,7 +5,7 @@
     <body class="dash-homepage">
         <div class="account-page-heading">
             <h1>Steam Account Lookup</h1>
-            <h4>Want to know information about your Steam account? Type in your Steam ID/Steam URL below!</h4>
+            <h4>Want to know information about a Steam account? Type in their Steam ID/Steam URL below!</h4>
         </div>
         <div class="module-body form form--padding-top">
             <form class="form-horizontal row-fluid" method="post" enctype="multipart/form-data">
@@ -19,7 +19,7 @@
                     <div class="control-group find-steam-id-button" style="margin-bottom:10px;">
                         <button type="submit" class="btn btn-primary" name="submitBtn" id="find-steam-id">   
                             <i class="fas fa-search"></i>
-                            <span id="find-steam-id-button-text">Find Steam Account</span>
+                                <span id="find-steam-id-button-text">Find Steam Account</span>
                             <i class="fas fa-spinner fa-spin" style="visibility:hidden;"></i>
                         </button>
                     </div>
@@ -32,6 +32,7 @@
             <div class="alert alert-info user-private" style="display:none;"><strong>Success!</strong> User found!<strong> However,</strong> This user's profile is private resulting in limited information. If this is your profile, you can change your Steam profile's "Privacy Settings". Privacy settings take time to update so try again later. -<strong> Click to dismiss.</strong></div>
             <div class="alert alert-secondary user-images" style="display:none;">Click the images to visit their respective pages. -<strong> Click to dismiss.</strong></div>
         </div><hr><br>
+        
     <div class="steam-overall-results">
         <div class="steam-avatar-div" style="display:none;">
             <a id="steam-avatar-link" target=_blank>
@@ -42,6 +43,29 @@
         <div class="steam-id-user-game-results">
             <div class="steam-id-results-div" style="display:none;"></div>
             <div class="steam-id-game-div" style="display:none;"></div>
+        </div>
+    </div>
+    <br>
+        
+    <div class="steam-id-recent-games">
+        <div class="recent-games-heading">
+            <hr>
+            <h3>Recent Games</h3>
+            <h5>Click the button below to find information about the recent games this user has played.</h5>
+            <div class="module-body form form--padding-top">
+                <form class="form-horizontal row-fluid" method="post" enctype="multipart/form-data">
+                    @csrf
+                    <div class="form-body">
+                        <div class="control-group find-recent-games-button" style="margin-bottom:10px;">
+                            <button type="submit" class="btn btn-primary" name="submitBtn" id="find-recent-games">   
+                                <i class="fas fa-search"></i>
+                                    <span id="find-recent-games-text">Find Recent Games</span>
+                                <i class="fas fa-spinner fa-spin" style="visibility:hidden;"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
+            </div>
         </div>
     </div>
     <div id="end-row"><br><br><br></div>

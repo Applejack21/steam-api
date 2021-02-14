@@ -12,6 +12,10 @@ nav.header-nav {
     background-color:#2e6e9e;
 }
 
+.account-page-heading, .recent-games-heading {
+    text-align: center;
+}
+
 .user-found, .user-private, .user-images {
     cursor: pointer;
 }

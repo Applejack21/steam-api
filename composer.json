@@ -35,9 +35,6 @@
         }
     },
     "autoload": {
-        "classmap": [
-            "app/functions"
-        ],
         "psr-4": {
             "App\\": "app/",
             "Database\\Factories\\": "database/factories/",

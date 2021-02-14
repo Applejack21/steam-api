@@ -86,7 +86,7 @@ console.log(data.steam_data);
                         }
                         
                         results_steam_avatar.attr('src', data.steam_data['json_avatar_full']);
-                        steam_avatar_link.attr('href', "https://steamcommunity.com/profiles/"+steam_user_id.trim());
+                        steam_avatar_link.attr('href', "https://steamcommunity.com/profiles/"+data.steam_data['json_steam_id64']);
                         
                         if("json_real_name" in data.steam_data) {
                             steam_id_results_div.append("<h3 id='steam-name'>"+data.steam_data['json_person_name']+"<span id='steam-real-name' class='text--colour-grey'> ("+data.steam_data['json_real_name']+")</span></h3>");
@@ -134,7 +134,7 @@ console.log(data.steam_data);
                             steam_id_game_div.append("<p class='text--colour-grey'>Currently Playing: "+data.steam_data['json_current_game_name']+"</p>");
                             
                             if("json_current_game_lobby_id" in data.steam_data) {
-                                steam_id_game_div.append("<span><a href='steam://joinlobby/"+data.steam_data['json_current_game_id']+"/"+data.steam_data['json_current_game_lobby_id']+"/"+data.steam_data['json_steam_id']+"' class='btn btn-success' role='button'>Join Game Lobby</a></span>");
+                                steam_id_game_div.append("<span><a href='steam://joinlobby/"+data.steam_data['json_current_game_id']+"/"+data.steam_data['json_current_game_lobby_id']+"/"+data.steam_data['json_steam_id64']+"' class='btn btn-success' role='button'>Join Game Lobby</a></span>");
                             } else if ("json_current_game_server_ip" in data.steam_data) {
                                 steam_id_game_div.append("<span><a href='steam://connect/"+data.steam_data['json_current_game_server_ip']+"' class='btn btn-success' role='button'>Join Game Server</a></span>");
                             }  else {

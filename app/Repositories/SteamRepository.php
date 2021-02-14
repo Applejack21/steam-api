@@ -4,19 +4,29 @@ namespace App\Repositories;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
+use App\Repositories\SteamIDParse;
+
 
 class SteamRepository
 {
+    
     public function findSteamId($request)
     {
         $json_data = array();
         $steam_id = $request->steam_id;
-        $json_data["json_steam_id"] = $steam_id; //add steam id to array
         $api_key = env('STEAM_API_KEY');
-        $api_url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$steam_id;
-        $frame_api_url = "https://api.steampowered.com/IPlayerService/GetAvatarFrame/v1/?key=".$api_key."&steamid=".$steam_id;
         $steam_countries_json = 'public/json/steam_countries.min.json';
         
+        //take the url the user entered and change it to steamid64, if steamid64 was entered then this will essentially do nothing
+        SteamID::SetSteamAPIKey($api_key);
+        $steam_id_parse = SteamID::Parse($steam_id, SteamID::FORMAT_AUTO, true );
+        $steam_id = $steam_id_parse->Format(SteamID::FORMAT_STEAMID64); 
+        
+        $json_data["json_steam_id64"] = $steam_id; //add steam id64 into the array
+        
+        $api_url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$steam_id;
+        $frame_api_url = "https://api.steampowered.com/IPlayerService/GetAvatarFrame/v1/?key=".$api_key."&steamid=".$steam_id;
+
         $json_decode = json_decode(file_get_contents($api_url),true);
 
         if(!empty($json_decode['response'])) {

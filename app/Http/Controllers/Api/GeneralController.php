@@ -31,7 +31,7 @@ class GeneralController extends Controller
     public function findSteamId(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'steam_id' => 'required|numeric'
+            'steam_id' => 'required'
         ]);
         
         if($validator->fails()) {

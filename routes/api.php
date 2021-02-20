@@ -14,3 +14,4 @@ use Illuminate\Http\Request;
 */
 
     Route::post('steam/findsteamid', 'Api\GeneralController@findSteamId');
+    Route::post('steam/findrecentgames', 'Api\GeneralController@findRecentGames');

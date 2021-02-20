@@ -45,4 +45,22 @@ class GeneralController extends Controller
             }
         }
     }
+    
+    public function findRecentGames(Request $request)
+    {
+        $validator = Validator::make($request->all(), [
+            'steam_id' => 'required'
+        ]);
+        
+        if($validator->fails()) {
+            return response()->json(['status' => $this->fail_status], $this->fail_status);
+        } else {
+            $find_recent_games = $this->steam->findRecentGames($request);
+            if(!isset($find_recent_games)) {
+                return response()->json(['status' => $this->error_status], $this->error_status);
+            } else {
+                return response()->json(['status' => $this->success_status, 'steam_data' => $find_recent_games], $this->success_status);
+            }
+        }
+    }
 }

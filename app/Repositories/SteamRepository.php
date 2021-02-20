@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 use App\Repositories\SteamIDParse;
 
 $global_variables = array(
-    'steam_id' => "test"
+    'steam_id' => ""
 );
 
 class SteamRepository

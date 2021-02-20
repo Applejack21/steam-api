@@ -47,7 +47,7 @@
     </div>
     <br>
         
-    <div class="steam-id-recent-games">
+    <div class="steam-id-recent-games" style="visibility:hidden;">
         <div class="recent-games-heading">
             <hr>
             <h3>Recent Games</h3>

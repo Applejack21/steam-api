@@ -1,12 +1,14 @@
 var General = {
     settings: {
-        api_url: "http://steamapi.test/api"
+        api_url: "http://steamapi.test/api",
+        global_steam_id: ""
     }
 };
 
 var Homepage = {
     settings: {
         $find_steam_info: $('#find-steam-id'),
+        $find_recent_games: $('#find-recent-games'),
     },
 
     init: function() {
@@ -15,6 +17,7 @@ var Homepage = {
 
     bindEvents: function() {
         $('#find-steam-id').on('click', Homepage.findSteamInfo);
+        $('find-recent-games').on('click', Homepage.fineRecentGames);
     },
     
     findSteamInfo: function(e) {
@@ -23,7 +26,6 @@ var Homepage = {
         var payload = new FormData(), 
             find_steam_info_button = $('#find-steam-id'),
             steam_user_id = $('#steam-user-id-input-box').val(),
-            find_steam_id_div = $('.how-to-find-steam-id'),
             steam_results_overall_div = $('.steam-id-user-game-results'),
             steam_id_results_div = $('.steam-id-results-div'),
             steam_id_game_div = $('.steam-id-game-div'),
@@ -33,6 +35,7 @@ var Homepage = {
             results_game_header = $('#steam-id-game-image'),
             steam_id_button_text = $('#find-steam-id-button-text'),
             steam_avatar_link = $('#steam-avatar-link'),
+            steam_recent_games = $('.steam-id-recent-games'),
             valid = true;
                 
         steam_id_button_text.text('Searching... ');
@@ -62,20 +65,18 @@ var Homepage = {
                 processData: false,
                 success:function(data) {
                     if(data.status === 200) {
-console.log(data.steam_data);
+                        
                         steam_id_results_div.empty(); //remove the previous steam id results
                         steam_id_game_div.empty(); //remove the previous steam game results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
                         results_steam_avatar_frame.removeAttr('src');
                         results_game_header.removeAttr('src'); // ""
                         
+                        General.settings.global_steam_id = data.steam_data['json_steam_id64']; //set steam id in global variable
+console.log("Add Steam ID to global id: "+General.settings.global_steam_id);
                         
-                        steam_avatar_div.css({
-                                                'display' : 'inline-block'
-                                            });                        
-                        steam_id_results_div.css({
-                                                'display' : 'inline-block'
-                                            });
+                        steam_avatar_div.css({'display' : 'inline-block'});                        
+                        steam_id_results_div.css({'display' : 'inline-block'});
                         
                         //display steam id results
                         if("json_avatar_frame" in data.steam_data) {
@@ -166,7 +167,8 @@ console.log(data.steam_data);
                     $(".user-images").click(function() {
                         $(".user-images").fadeOut( "slow" );
                     });
-                                        
+                      
+                    steam_recent_games.css({'visibility' : 'visible'});
                     steam_id_button_text.text('Find Steam Account');
                     find_steam_info_button.find('.fa-spin').css("visibility", "hidden");
                     find_steam_info_button.prop('disabled', false);
@@ -184,6 +186,22 @@ console.log(data.steam_data);
                 }
             });
         }     
+    },
+    
+    fineRecentGames: function(e) {
+        e.preventDefault();
+        
+        console.log("Steam ID to search:"+General.settings.global_steam_id);
+        
+        var payload = new FormData(),
+            find_recent_games_button = $('#find-recent-games'),
+            steam_recent_button_text = $('#find-recent-games-text'),
+            valid = true;
+        
+        steam_recent_button_text.text('Searching... ');
+        find_recent_games_button.prop('disabled', true);
+        find_recent_games_button.find('.fa-spin').css("visibility", "visible");
+        find_recent_games_button.closest('.module-body').find('.alert').hide();
     }
 };
 

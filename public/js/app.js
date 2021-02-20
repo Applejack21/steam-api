@@ -17,7 +17,7 @@ var Homepage = {
 
     bindEvents: function() {
         $('#find-steam-id').on('click', Homepage.findSteamInfo);
-        $('find-recent-games').on('click', Homepage.fineRecentGames);
+        $('#find-recent-games').on('click', Homepage.fineRecentGames);
     },
     
     findSteamInfo: function(e) {
@@ -73,7 +73,6 @@ var Homepage = {
                         results_game_header.removeAttr('src'); // ""
                         
                         General.settings.global_steam_id = data.steam_data['json_steam_id64']; //set steam id in global variable
-console.log("Add Steam ID to global id: "+General.settings.global_steam_id);
                         
                         steam_avatar_div.css({'display' : 'inline-block'});                        
                         steam_id_results_div.css({'display' : 'inline-block'});
@@ -175,9 +174,9 @@ console.log("Add Steam ID to global id: "+General.settings.global_steam_id);
                 },
                 error: function(data) {
                     if(data.status === 400) {
-                        find_steam_info_button.closest('.module-body').find('.user-not-found').show(); //will show if the user enters anything other than digits
+                        find_steam_info_button.closest('.module-body').find('.user-not-found').show(); //will show if the user enters anything other than a steamid/url
                     } else if (data.status === 500) {
-                        find_steam_info_button.closest('.module-body').find('.general-error').show(); //will show if there was an error finding a user with the digits provided
+                        find_steam_info_button.closest('.module-body').find('.general-error').show(); //will show if there was an error finding a user with the steamid/url provided
                     }
                 
                     steam_id_button_text.text('Find Steam Account');
@@ -191,17 +190,29 @@ console.log("Add Steam ID to global id: "+General.settings.global_steam_id);
     fineRecentGames: function(e) {
         e.preventDefault();
         
-        console.log("Steam ID to search:"+General.settings.global_steam_id);
+console.log("Steam ID to search: "+General.settings.global_steam_id);
         
         var payload = new FormData(),
             find_recent_games_button = $('#find-recent-games'),
             steam_recent_button_text = $('#find-recent-games-text'),
+            global_steam_id = General.settings.global_steam_id,
             valid = true;
         
         steam_recent_button_text.text('Searching... ');
         find_recent_games_button.prop('disabled', true);
         find_recent_games_button.find('.fa-spin').css("visibility", "visible");
         find_recent_games_button.closest('.module-body').find('.alert').hide();
+        
+        if(global_steam_id == "") {
+            valid = false;
+        }
+        
+        if(!valid) {
+            find_recent_games_button.closest('.module-body').find('.empty-id').show();
+            find_recent_games_button.find('.fa-spin').css("visibility", "hidden");
+            find_recent_games_button.prop('disabled', false);
+            steam_recent_button_text.text('Find Recent Games');
+        }
     }
 };
 

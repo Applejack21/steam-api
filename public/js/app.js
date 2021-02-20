@@ -36,6 +36,8 @@ var Homepage = {
             steam_id_button_text = $('#find-steam-id-button-text'),
             steam_avatar_link = $('#steam-avatar-link'),
             steam_recent_games = $('.steam-id-recent-games'),
+            find_recent_games_button = $('#find-recent-games'),
+            steam_recent_button_text = $('#find-recent-games-text'),
             valid = true;
                 
         steam_id_button_text.text('Searching... ');
@@ -71,6 +73,11 @@ var Homepage = {
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
                         results_steam_avatar_frame.removeAttr('src');
                         results_game_header.removeAttr('src'); // ""
+                        
+                        //reenable the recent games button if they click it and then click "find steam account" button
+                        find_recent_games_button.find('.fa-spin').css("visibility", "hidden");
+                        find_recent_games_button.prop('disabled', false);
+                        steam_recent_button_text.text('Find Recent Games');
                         
                         General.settings.global_steam_id = data.steam_data['json_steam_id64']; //set steam id in global variable
                         

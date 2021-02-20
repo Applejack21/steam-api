@@ -43,7 +43,7 @@ class SteamIDResolutionException {
 	
 	function __construct( $reason, $text ) {
 		$this->reason = $reason;
-		parent::__construct( $text );
+//		parent::__construct( $text );
 	}
 }
 

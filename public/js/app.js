@@ -132,9 +132,7 @@ var Homepage = {
                         }
                         
                         if("json_current_game_name" in data.steam_data) {
-                            steam_id_game_div.css({
-                                                    'display' : 'inline-block'
-                                                });
+                            steam_id_game_div.css({'display' : 'inline-block'});
                             
                             $('#steam-user-status').append(" - In Game");
                             steam_id_game_div.append("<a target=_blank href='https://store.steampowered.com/app/"+data.steam_data['json_current_game_id']+"'><img alt='Game Store Banner' id='steam-id-game-image' src='"+data.steam_data['json_current_game_image']+"'</a>");
@@ -194,10 +192,10 @@ var Homepage = {
         }     
     },
     
+    
     fineRecentGames: function(e) {
-        e.preventDefault();
         
-console.log("Steam ID to search: "+General.settings.global_steam_id);
+        e.preventDefault();
         
         var payload = new FormData(),
             find_recent_games_button = $('#find-recent-games'),
@@ -219,6 +217,48 @@ console.log("Steam ID to search: "+General.settings.global_steam_id);
             find_recent_games_button.find('.fa-spin').css("visibility", "hidden");
             find_recent_games_button.prop('disabled', false);
             steam_recent_button_text.text('Find Recent Games');
+        } else {
+            payload.append("steam_id", global_steam_id);
+            
+            $.ajax({
+                url: General.settings.api_url+'/steam/findrecentgames',
+                type: 'POST',
+                data: payload,
+                cache: false,
+                contentType: false,
+                processData: false,
+                success:function(data) {
+                    if(data.status === 200) {
+
+                    }
+                    
+                    $(".user-found").click(function() {
+                        $(".user-found").fadeOut( "slow" );
+                    });
+                    
+                    $(".user-private").click(function() {
+                        $(".user-private").fadeOut( "slow" );
+                    });
+                    
+                    $(".user-images").click(function() {
+                        $(".user-images").fadeOut( "slow" );
+                    });
+                      
+                    steam_recent_button_text.text('Find Recent Games');
+                    find_recent_games_button.find('.fa-spin').css("visibility", "hidden");
+                    find_recent_games_button.prop('disabled', false);
+                },
+                error: function(data) {
+                    if(data.status === 400) {
+                        find_recent_games_button.closest('.module-body').find('.user-not-found').show(); //will show if the user enters anything other than a steamid/url
+                    } else if (data.status === 500) {
+                        find_recent_games_button.closest('.module-body').find('.general-error').show(); //will show if there was an error finding a user with the steamid/url provided
+                    }
+                    steam_recent_button_text.text('Find Recent Games');
+                    find_recent_games_button.find('.fa-spin').css("visibility", "hidden");
+                    find_recent_games_button.prop('disabled', false);
+                }
+            });
         }
     }
 };

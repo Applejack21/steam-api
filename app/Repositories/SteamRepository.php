@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\Log;
 use App\Repositories\SteamIDParse;
 
 $global_variables = array(
-    'steam_id' => ""
+    'steam_id' => "" //this will be the searched user's steamid64 and not a url
 );
 
 class SteamRepository
@@ -18,7 +18,7 @@ class SteamRepository
         global $global_variables;
         
         $json_data = array();
-        $steam_id = $request->steam_id;
+        $steam_id = $request->steam_id; //users search id/url
         $api_key = env('STEAM_API_KEY');
         $steam_countries_json = 'public/json/steam_countries.min.json';
         
@@ -28,7 +28,7 @@ class SteamRepository
         $steam_id = $steam_id_parse->Format(SteamID::FORMAT_STEAMID64);
         
         $json_data["json_steam_id64"] = $steam_id; //add steam id64 into the array
-        $global_variables['steam_id'] = $steam_id; //add steam_id to global for use later
+        $global_variables['steam_id'] = $steam_id; //add steam id64 to global variable for use later
         
         $api_url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$steam_id;
         $frame_api_url = "https://api.steampowered.com/IPlayerService/GetAvatarFrame/v1/?key=".$api_key."&steamid=".$steam_id;
@@ -154,6 +154,44 @@ class SteamRepository
                 return $json_data; 
             } else {
                 return;
+            }
+        }
+    }
+    
+    public function findRecentGames($request)
+    {
+        global $global_variables;
+        
+        $json_data = array();
+        $steam_id = $request->steam_id; //searched users steamid64
+        $api_key = env('STEAM_API_KEY');
+        
+        
+        $api_url = "http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=".$api_key."&steamid=".$steam_id;
+
+        $json_decode = json_decode(file_get_contents($api_url),true);
+        
+        if(!empty($json_decode['response'])) {
+            $response_array = $json_decode['response'];
+            if(!empty($response_array['games'])) {
+                $array_count = count($response_array['games']);
+                for ($i = 0; $i < $array_count; $i++) {
+                    $game_name = $response_array['games'][$i]['name'];
+                    $recent_hours = $response_array['games'][$i]['playtime_2weeks']; //hours in minutes
+                    $total_hours = $response_array['games'][$i]['playtime_forever']; //hours in minutes
+                    
+                    $recent_hours = $recent_hours / 60; //get hours
+                    $total_hours = $total_hours / 60; //get hours
+                    
+                    $recent_hours = number_format($recent_hours, 1); //convert to 1 decimal place
+                    $total_hours = round($total_hours); //round to near whole number
+                    
+                    $json_data[$i]["json_game_name"] = $game_name;
+                    $json_data[$i]["json_recent_hours"] = $recent_hours;
+                    $json_data[$i]["json_total_hours"] = $total_hours;
+                }
+Log::info(print_r($json_data,true));
+die();
             }
         }
     }

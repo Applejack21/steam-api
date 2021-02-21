@@ -176,7 +176,11 @@ class SteamRepository
             if(!empty($response_array['games'])) {
                 $array_count = count($response_array['games']);
                 for ($i = 0; $i < $array_count; $i++) {
-                    $game_name = $response_array['games'][$i]['name'];
+                    
+                    //url for achievements: http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?appid=730&key=EFEF71BF15A24DA73EAD88291274E32D&steamid=76561198043959584&l=en
+                    
+                    $app_id = $response_array['games'][$i]['appid']; //game app id
+                    $game_name = $response_array['games'][$i]['name']; //game name
                     $recent_hours = $response_array['games'][$i]['playtime_2weeks']; //hours in minutes
                     $total_hours = $response_array['games'][$i]['playtime_forever']; //hours in minutes
                     
@@ -190,8 +194,9 @@ class SteamRepository
                     $json_data[$i]["json_recent_hours"] = $recent_hours;
                     $json_data[$i]["json_total_hours"] = $total_hours;
                 }
-Log::info(print_r($json_data,true));
-die();
+                return $json_data; 
+            } else {
+                return;
             }
         }
     }

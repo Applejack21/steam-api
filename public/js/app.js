@@ -75,6 +75,7 @@ var Homepage = {
                         results_game_header.removeAttr('src'); // ""
                         
                         //reenable the recent games button if they click it and then click "find steam account" button
+                        find_recent_games_button.closest('.module-body').find('.alert').hide();
                         find_recent_games_button.find('.fa-spin').css("visibility", "hidden");
                         find_recent_games_button.prop('disabled', false);
                         steam_recent_button_text.text('Find Recent Games');
@@ -228,8 +229,15 @@ var Homepage = {
                 contentType: false,
                 processData: false,
                 success:function(data) {
+console.log(data);
                     if(data.status === 200) {
-
+                        jQuery.each(data.steam_data, function(index, response) {
+console.log("Game: "+response.json_game_name);
+console.log("Recent Hours: "+response.json_recent_hours+" hours");
+console.log("Total Hours: "+response.json_total_hours+" hours");
+                        });
+                    } else {
+                        find_recent_games_button.closest('.module-body').find('.user-not-found').show();
                     }
                     
                     $(".user-found").click(function() {

@@ -68,11 +68,15 @@
                 <div class="alert alert-danger general-error" style="display:none;"><strong>Warning!</strong> Something went wrong. Please make sure you've entered a valid Steam ID/Steam URL and the profile isn't set to "Private". And if so, check <a href="https://steamstat.us/" target="_blank">steamstat.us</a> to see if the "Steam Web API" is up and running.</div>
                 <div class="alert alert-danger empty-id" style="display:none;"><strong>Warning!</strong> Please enter a Steam ID/Steam URL.</div>
                 <div class="alert alert-danger user-not-found" style="display:none;"><strong>Warning!</strong> Please enter a valid Steam ID/Steam URL.</div>
+                <div class="alert alert-info no-recent-games" style="display:none;"><strong>That's odd...</strong> This user has not played any games recently.</div>
                 <div class="alert alert-success user-found" style="display:none;"><strong>Success!</strong> User game information found! -<strong> Click to dismiss.</strong></div>
                 <div class="alert alert-secondary user-images" style="display:none;">Click the images to visit their respective pages. -<strong> Click to dismiss.</strong></div>
             </div>
         </div><hr><br>
+        
+        <div class="steam-recent-games-results" style="display:none;"></div>
     </div>
+    <br>
     <div id="end-row"><br><br><br></div>
     </body>
 @endsection

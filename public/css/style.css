@@ -88,7 +88,7 @@ nav a:hover {
     padding-right: 10px;
 }
 
-#steam-avatar, #steam-id-game-image {
+#steam-avatar, #steam-id-game-image, #steam-recent-game-image {
     border: 5px;
     border-style: ridge;
     border-color: #808080;

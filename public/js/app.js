@@ -38,6 +38,7 @@ var Homepage = {
             steam_recent_games = $('.steam-id-recent-games'),
             find_recent_games_button = $('#find-recent-games'),
             steam_recent_button_text = $('#find-recent-games-text'),
+            steam_recent_games_div = $('.steam-recent-games-results'),
             valid = true;
                 
         steam_id_button_text.text('Searching... ');
@@ -66,10 +67,12 @@ var Homepage = {
                 contentType: false,
                 processData: false,
                 success:function(data) {
+console.log(data);
                     if(data.status === 200) {
                         
                         steam_id_results_div.empty(); //remove the previous steam id results
                         steam_id_game_div.empty(); //remove the previous steam game results
+                        steam_recent_games_div.empty(); //remove the previous recent game results
                         results_steam_avatar.removeAttr('src'); //remove the image from the previous steam id results
                         results_steam_avatar_frame.removeAttr('src');
                         results_game_header.removeAttr('src'); // ""
@@ -131,6 +134,8 @@ var Homepage = {
                         else {
                             steam_id_results_div.append("<p><i class='fas fa-map-marker-alt'></i><span id='steam-user-location-unknown'> Location Unknown</span></p>");
                         }
+                        
+                        //display game data
                         
                         if("json_current_game_name" in data.steam_data) {
                             steam_id_game_div.css({'display' : 'inline-block'});
@@ -201,6 +206,8 @@ var Homepage = {
         var payload = new FormData(),
             find_recent_games_button = $('#find-recent-games'),
             steam_recent_button_text = $('#find-recent-games-text'),
+            find_steam_info_button = $('#find-steam-id'),
+            steam_recent_games_div = $('.steam-recent-games-results'),
             global_steam_id = General.settings.global_steam_id,
             valid = true;
         
@@ -230,11 +237,28 @@ var Homepage = {
                 processData: false,
                 success:function(data) {
 console.log(data);
-                    if(data.status === 200) {
+                    if(data.status === 200) {                     
+
+                        if("json_none_found" in data.steam_data) {
+                            find_recent_games_button.closest('.module-body').find('.no-recent-games').show();
+                            steam_recent_button_text.text('Find Recent Games');
+                            find_recent_games_button.find('.fa-spin').css("visibility", "hidden");
+                            find_recent_games_button.prop('disabled', false);
+                            return;
+                        }
+
+                         steam_recent_games_div.css({'display' : 'inline-block'}); 
+                        
+                        //display each game information
                         jQuery.each(data.steam_data, function(index, response) {
-console.log("Game: "+response.json_game_name);
+                                                        
+console.log("Game: "+response.json_game_name+" (ID: "+response.json_game_id+")");
+console.log("Game image: "+response.json_game_image);
 console.log("Recent Hours: "+response.json_recent_hours+" hours");
 console.log("Total Hours: "+response.json_total_hours+" hours");
+                            
+                            steam_recent_games_div.append("<h3 id='steam-game-name'>"+response.json_game_name+"</h3>");
+                            steam_recent_games_div.append("<a target=_blank href='https://store.steampowered.com/app/"+response.json_game_id+"'><img alt='Game Store Banner' id='steam-recent-game-image' src='"+response.json_game_image+"'</a>");
                         });
                     } else {
                         find_recent_games_button.closest('.module-body').find('.user-not-found').show();
@@ -256,7 +280,7 @@ console.log("Total Hours: "+response.json_total_hours+" hours");
                     find_recent_games_button.find('.fa-spin').css("visibility", "hidden");
                     find_recent_games_button.prop('disabled', false);
                 },
-                error: function(data) {
+                error: function(data) {                    
                     if(data.status === 400) {
                         find_recent_games_button.closest('.module-body').find('.user-not-found').show(); //will show if the user enters anything other than a steamid/url
                     } else if (data.status === 500) {

@@ -6,17 +6,11 @@ use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\Log;
 use App\Repositories\SteamIDParse;
 
-$global_variables = array(
-    'steam_id' => "" //this will be the searched user's steamid64 and not a url
-);
-
 class SteamRepository
 {
     
     public function findSteamId($request)
     {
-        global $global_variables;
-        
         $json_data = array();
         $steam_id = $request->steam_id; //users search id/url
         $api_key = env('STEAM_API_KEY');
@@ -28,7 +22,6 @@ class SteamRepository
         $steam_id = $steam_id_parse->Format(SteamID::FORMAT_STEAMID64);
         
         $json_data["json_steam_id64"] = $steam_id; //add steam id64 into the array
-        $global_variables['steam_id'] = $steam_id; //add steam id64 to global variable for use later
         
         $api_url = "http://api.steampowered.com/ISteamUser/GetPlayerSummaries/v0002/?key=".$api_key."&steamids=".$steam_id;
         $frame_api_url = "https://api.steampowered.com/IPlayerService/GetAvatarFrame/v1/?key=".$api_key."&steamid=".$steam_id;
@@ -159,14 +152,11 @@ class SteamRepository
     }
     
     public function findRecentGames($request)
-    {
-        global $global_variables;
-        
+    {        
         $json_data = array();
         $steam_id = $request->steam_id; //searched users steamid64
         $api_key = env('STEAM_API_KEY');
-        
-        
+                
         $api_url = "http://api.steampowered.com/IPlayerService/GetRecentlyPlayedGames/v0001/?key=".$api_key."&steamid=".$steam_id;
 
         $json_decode = json_decode(file_get_contents($api_url),true);
@@ -176,13 +166,13 @@ class SteamRepository
             if(!empty($response_array['games'])) {
                 $array_count = count($response_array['games']);
                 for ($i = 0; $i < $array_count; $i++) {
-                    
                     //url for achievements: http://api.steampowered.com/ISteamUserStats/GetPlayerAchievements/v1/?appid=730&key=EFEF71BF15A24DA73EAD88291274E32D&steamid=76561198043959584&l=en
                     
                     $app_id = $response_array['games'][$i]['appid']; //game app id
                     $game_name = $response_array['games'][$i]['name']; //game name
                     $recent_hours = $response_array['games'][$i]['playtime_2weeks']; //hours in minutes
                     $total_hours = $response_array['games'][$i]['playtime_forever']; //hours in minutes
+                    $game_image = "https://steamcdn-a.akamaihd.net/steam/apps/".$app_id."/header.jpg";
                     
                     $recent_hours = $recent_hours / 60; //get hours
                     $total_hours = $total_hours / 60; //get hours
@@ -190,14 +180,20 @@ class SteamRepository
                     $recent_hours = number_format($recent_hours, 1); //convert to 1 decimal place
                     $total_hours = round($total_hours); //round to near whole number
                     
+                    $json_data[$i]["json_game_id"] = $app_id;
+                    $json_data[$i]["json_game_image"] = $game_image;
                     $json_data[$i]["json_game_name"] = $game_name;
                     $json_data[$i]["json_recent_hours"] = $recent_hours;
                     $json_data[$i]["json_total_hours"] = $total_hours;
                 }
                 return $json_data; 
             } else {
-                return;
+                $json_data["json_none_found"] = "none";
+                return $json_data;
             }
+        } else {
+            $json_data["json_none_found"] = "non";
+            return $json_data;
         }
     }
 }
